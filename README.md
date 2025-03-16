@@ -5,7 +5,7 @@
 
   ## Traffic Lights
 
-  <code></code>
+<code></code>
 
   ## Traffic Lights with pedestrian
 
