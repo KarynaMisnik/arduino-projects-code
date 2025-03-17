@@ -31,6 +31,11 @@
 	changeLights();
 	}
 	}
+
+ void changeLights() {
+	digitalWrite(carGreen, LOW); //green off
+	digitalWrite(carYellow, HIGH); //yellow on
+	delay(2000); //wait 2 seconds
  </code>
 
   ## Traffic Lights with pedestrian
