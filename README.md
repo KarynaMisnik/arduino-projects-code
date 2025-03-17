@@ -61,6 +61,10 @@
 	delay(1000);
 	digitalWrite(carYellow, LOW); //yellow off
 	digitalWrite(carGreen, HIGH); 
+
+ changeTime = millis(); //record the time since last change of lights
+	//then return to the main program loop
+	}
  </code>
 
   ## Traffic Lights with pedestrian
