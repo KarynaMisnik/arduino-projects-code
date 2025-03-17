@@ -52,6 +52,9 @@
 	digitalWrite(pedGreen, LOW);
 	delay(250);
 	}
+
+ digitalWrite(pedRed, HIGH);//turn ped red on
+	delay(500);
  </code>
 
   ## Traffic Lights with pedestrian
