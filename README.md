@@ -36,6 +36,10 @@
 	digitalWrite(carGreen, LOW); //green off
 	digitalWrite(carYellow, HIGH); //yellow on
 	delay(2000); //wait 2 seconds
+
+ digitalWrite(carYellow, LOW); //yellow off
+	digitalWrite(carRed, HIGH); //red on
+	delay(1000); //wait 1 second till its safe
  </code>
 
   ## Traffic Lights with pedestrian
