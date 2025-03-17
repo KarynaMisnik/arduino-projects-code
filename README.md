@@ -23,6 +23,14 @@
 	digitalWrite(carGreen, HIGH); //turn on the green lights
 	digitalWrite(pedRed, HIGH);
 	}
+ 	void loop() {
+	int state = digitalRead(button);
+	//check if button is pressed and it is over 5 seconds since last button press
+	if(state == HIGH && (millis() - changeTime)> 5000){
+	//call the function to change the lights
+	changeLights();
+	}
+	}
  </code>
 
   ## Traffic Lights with pedestrian
