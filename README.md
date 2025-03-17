@@ -5,7 +5,15 @@
 
   ## Traffic Lights
 
-<code></code>
+<code>int carRed = 12; //assign the car lights
+	int carYellow = 11;
+	int carGreen = 10;
+	int button = 9; //button pin
+	int pedRed = 8; //assign the pedestrian lights
+	int pedGreen = 7;
+	int crossTime =5000; //time for pedestrian to cross
+	unsigned long changeTime;//time since button pressed
+ </code>
 
   ## Traffic Lights with pedestrian
 
