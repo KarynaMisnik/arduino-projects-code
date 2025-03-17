@@ -13,6 +13,16 @@
 	int pedGreen = 7;
 	int crossTime =5000; //time for pedestrian to cross
 	unsigned long changeTime;//time since button pressed
+ void setup() {
+	pinMode(carRed, OUTPUT);
+	pinMode(carYellow, OUTPUT);
+	pinMode(carGreen, OUTPUT);
+	pinMode(pedRed, OUTPUT);
+	pinMode(pedGreen, OUTPUT);
+	pinMode(button, INPUT);
+	digitalWrite(carGreen, HIGH); //turn on the green lights
+	digitalWrite(pedRed, HIGH);
+	}
  </code>
 
   ## Traffic Lights with pedestrian
