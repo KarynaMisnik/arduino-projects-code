@@ -45,6 +45,13 @@
 	digitalWrite(pedGreen, HIGH); //ped green on
 	
 	delay(crossTime); //wait for preset time period
+ 	//flash the ped green
+	for (int x=0; x<10; x++) {
+	digitalWrite(pedGreen, HIGH);
+	delay(250);
+	digitalWrite(pedGreen, LOW);
+	delay(250);
+	}
  </code>
 
   ## Traffic Lights with pedestrian
