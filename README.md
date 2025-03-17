@@ -55,6 +55,12 @@
 
  digitalWrite(pedRed, HIGH);//turn ped red on
 	delay(500);
+
+ digitalWrite(carRed, LOW); //red off
+	digitalWrite(carYellow, HIGH); //yellow on
+	delay(1000);
+	digitalWrite(carYellow, LOW); //yellow off
+	digitalWrite(carGreen, HIGH); 
  </code>
 
   ## Traffic Lights with pedestrian
