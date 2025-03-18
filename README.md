@@ -31,19 +31,15 @@
 	changeLights();
 	}
 	}
-
  void changeLights() {
 	digitalWrite(carGreen, LOW); //green off
 	digitalWrite(carYellow, HIGH); //yellow on
 	delay(2000); //wait 2 seconds
-
  digitalWrite(carYellow, LOW); //yellow off
 	digitalWrite(carRed, HIGH); //red on
 	delay(1000); //wait 1 second till its safe
-
  digitalWrite(pedRed, LOW); //ped red off
 	digitalWrite(pedGreen, HIGH); //ped green on
-	
 	delay(crossTime); //wait for preset time period
  	//flash the ped green
 	for (int x=0; x<10; x++) {
@@ -52,16 +48,13 @@
 	digitalWrite(pedGreen, LOW);
 	delay(250);
 	}
-
  digitalWrite(pedRed, HIGH);//turn ped red on
 	delay(500);
-
  digitalWrite(carRed, LOW); //red off
 	digitalWrite(carYellow, HIGH); //yellow on
 	delay(1000);
 	digitalWrite(carYellow, LOW); //yellow off
 	digitalWrite(carGreen, HIGH); 
-
  changeTime = millis(); //record the time since last change of lights
 	//then return to the main program loop
 	}
