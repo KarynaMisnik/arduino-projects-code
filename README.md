@@ -188,6 +188,49 @@ This method is commonly used in circuits where multiple LEDs share a common posi
 
 ## Traffic Lights
 
+> Traffic light: use 3 Coloured LEDs to create a traffic light
+
+<code>int carRed = 12;    // Car traffic light pins
+int carYellow = 11;
+int carGreen = 10;
+
+int shortDelay = 200;  // 200ms delay
+int longDelay = 500;   // 500ms delay
+
+void setup() {
+  pinMode(carRed, OUTPUT);
+  pinMode(carYellow, OUTPUT);
+  pinMode(carGreen, OUTPUT);
+  digitalWrite(carGreen, HIGH);  // Start with green light ON
+}
+
+void loop() {
+  changeLights();
+}
+
+void changeLights() {
+  // Green → Yellow → Red
+  digitalWrite(carGreen, LOW);   // Turn off Green
+  digitalWrite(carYellow, HIGH); // Turn on Yellow
+  delay(shortDelay);
+  
+  digitalWrite(carYellow, LOW);  // Turn off Yellow
+  digitalWrite(carRed, HIGH);    // Turn on Red
+  delay(longDelay);
+
+  // Red → Yellow → Green
+  digitalWrite(carRed, LOW);     // Turn off Red
+  digitalWrite(carYellow, HIGH); // Turn on Yellow
+  delay(shortDelay);
+
+  digitalWrite(carYellow, LOW);  // Turn off Yellow
+  digitalWrite(carGreen, HIGH);  // Turn on Green
+  delay(longDelay);
+}
+</code>
+
+## Traffic Lights with pedestrian
+
 <code>int carRed = 12; //assign the car lights
 	int carYellow = 11;
 	int carGreen = 10;
@@ -243,6 +286,4 @@ This method is commonly used in circuits where multiple LEDs share a common posi
 	}
  </code>
 
-  ## Traffic Lights with pedestrian
 
- <code></code>
