@@ -3,11 +3,14 @@
 https://www.dfrobot.com/blog-595.html
 
 * [Blinking Led](#blinking-led)
+  - [using delay()](#using-delay)
+  - [using millis()](#using-millis)
 * [Traffic Lights](#traffic-lights)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
 ## Blinking LED
 
+#### using delay()
 **Code**
 
 <code>int red = 5;
@@ -22,6 +25,41 @@ void loop() {
 	delay(time);                      // wait for certain amount of time 
 	digitalWrite(red, LOW);   // turn the LED off by making the voltage LOW
 	delay(time);                    
+}
+</code>
+
+#### using millis()
+
+<code>// constants won't change. Used here to set a pin number
+const int ledPin = 5;  // the number of the LED pin 5
+// Variables will change:
+int ledState = LOW;  // ledState used to set the LED
+// use "unsigned long" for variables that hold time
+// The value will quickly become too large for an int to store
+unsigned long previousMillis = 0;  // will store last time LED was updated
+// constants won't change:
+const long interval = 1000;  // interval at which to blink (milliseconds)
+void setup() {
+	// set the digital pin as output:
+	pinMode(ledPin, OUTPUT);
+}
+void loop() {
+	// check to see if it's time to blink the LED; that is, if the difference
+	// between the current time and last time you blinked the LED is bigger than
+	// the interval at which you want to blink the LED.
+	unsigned long currentMillis = millis();
+	if (currentMillis - previousMillis >= interval) {
+		// save the last time you blinked the LED
+		previousMillis = currentMillis;
+		// if the LED is off turn it on and vice-versa:
+		if (ledState == LOW) {
+			ledState = HIGH;
+		} else {
+			ledState = LOW;
+		}
+		// set the LED with the ledState of the variable:
+		digitalWrite(ledPin, ledState);
+	}
 }
 </code>
 
