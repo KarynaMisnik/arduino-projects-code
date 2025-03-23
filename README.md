@@ -2,11 +2,38 @@
 
 https://www.dfrobot.com/blog-595.html
 
+*[Basic code editing](#basic-code-editing)
 * [Blinking Led](#blinking-led)
   - [using delay()](#using-delay)
   - [using millis()](#using-millis)
 * [Traffic Lights](#traffic-lights)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
+
+ ## Basic Code Editing
+
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://docs.arduino.cc/built-in-examples/basics/Blink/#code">Arduino Docs</a>  
+  </details>
+
+ <code>void setup() {
+  Serial.begin(9600); // Start serial communication
+  int num = 42;       // Local variable
+  pinMode(LED_BUILTIN, OUTPUT);
+  
+  Serial.print("Size of num: ");
+  Serial.println(sizeof(num)); // Print size of int (typically 2 or 4 bytes)
+}
+void loop() {
+  int ledState = HIGH; // Local variable
+  digitalWrite(LED_BUILTIN, ledState);
+  delay(1000);
+  ledState = LOW;
+  digitalWrite(LED_BUILTIN, ledState);
+  delay(1000);
+}
+</code>
 
 ## Blinking LED
 
