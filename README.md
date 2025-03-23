@@ -1,6 +1,8 @@
 # arduino-projects-code
 
-https://www.dfrobot.com/blog-595.html
+<a href='https://docs.arduino.cc/'>Arduino Docs</a>
+
+Menu: 
 
 * [Basic code editing](#basic-code-editing)
 * [Blinking Led](#blinking-led)
@@ -231,6 +233,12 @@ void changeLights() {
 </code>
 
 ## Pushbutton
+
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://www.dfrobot.com/blog-595.html">Arduino Docs</a>  
+  </details>
 
 ## Traffic Lights with pedestrian
 
