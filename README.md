@@ -2,8 +2,38 @@
 
 https://www.dfrobot.com/blog-595.html
 
+* [Blinking Led](#blinking-led)
 * [Traffic Lights](#traffic-lights)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
+
+## Blinking LED
+
+**Code**
+
+<code>int red = 5;
+int time = 1000 //time delay;
+void setup() {
+	// initialize colored led red connected to digital pin 5 as an output.
+	pinMode(red, OUTPUT);
+}
+// the loop function runs over and over again forever
+void loop() {
+	digitalWrite(red, HIGH);  // turn the LED on (HIGH is the voltage level)
+	delay(time);                      // wait for certain amount of time 
+	digitalWrite(red, LOW);   // turn the LED off by making the voltage LOW
+	delay(time);                    
+}
+</code>
+
+<table>
+	<tr><th>When OUTPUT is HIGH(led is blinking red)</th>
+	<th>When OUTPUT is LOW(led is not blinking)</th></tr>
+	<tr><td><img width=400 height=auto src='https://github.com/user-attachments/assets/3e117b31-fa0b-4fd1-88d2-8791b6f98796'></td>
+	<td><img width=400 height=auto src='https://github.com/user-attachments/assets/1a517274-f4a0-4a09-81f3-9c910e354c25'>
+</td></tr>
+</table>
+
+
 
   ## Traffic Lights
 
