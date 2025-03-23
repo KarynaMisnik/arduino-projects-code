@@ -11,6 +11,7 @@ https://www.dfrobot.com/blog-595.html
   - [Analog Input Pins](#analog-input-pins)
   - [Power and Ground Pins](#power-and-ground-pins)
   - [Reset Pin](#reset-pin)
+* [Question 1](#question-1)
 * [Traffic Lights](#traffic-lights)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
@@ -155,6 +156,35 @@ Power and Ground Pins: Essential for powering the microcontroller and providing 
 #### Reset Pin
 
 Reset Pin: This pin is used to reset the microcontroller. Applying a reset pulse to this pin initializes the microcontroller's program execution from the beginning.
+
+## Question 1
+
+> The LED peripherals can be connected in two ways using a “current limiting resistor” between the atmega328 PINs and the LED(s).
+> Which alternative lights up the LED when the output pin is LOW and why?
+
+The LED will light up when the output pin is LOW if the LED is connected in a "sinking" configuration (also called active-low).
+There are two ways to connect an LED with a current-limiting resistor to an Arduino pin:
+
+<table>
+	<tr><th>Active-High (Source Current Configuration)</th>
+	<th>Active-Low (Sink Current Configuration)</th></tr>
+	<tr>
+	<td><ul><li>
+		LED anode (+) → Arduino pin
+	</li>
+	<li>LED cathode (-) → Resistor → GND</li>
+	<li>LED lights up when the pin is HIGH (provides current)</li></ul></td>
+	<td><ul><li>LED anode (+) → VCC (5V)</li><li>LED cathode (-) → Resistor → Arduino pin</li><li>LED lights up when the pin is LOW (creates a path to GND, sinking current)</li></ul></td>
+	</tr>
+</table>
+
+**Why does the LED light up when the pin is LOW?**
+
+In the sinking configuration, setting the pin LOW allows current to flow from VCC (5V) through the LED to the pin, which acts as a path to ground.
+The current flows, and the LED turns ON.
+When the pin is set HIGH, no voltage difference exists across the LED, so it stays OFF.
+
+This method is commonly used in circuits where multiple LEDs share a common positive voltage (VCC) and are individually controlled by grounding the cathode through a microcontroller pin.
 
 ## Traffic Lights
 
