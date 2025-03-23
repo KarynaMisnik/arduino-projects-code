@@ -12,6 +12,11 @@ https://www.dfrobot.com/blog-595.html
 
 #### using delay()
 **Code**
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://docs.arduino.cc/built-in-examples/basics/Blink/#code">Arduino Docs</a>  
+  </details>
 
 <code>int red = 5;
 int time = 1000 //time delay;
@@ -27,6 +32,12 @@ void loop() {
 	delay(time);                    
 }
 </code>
+
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://docs.arduino.cc/built-in-examples/digital/BlinkWithoutDelay/">Arduino Docs</a>  
+  </details>
 
 #### using millis()
 
@@ -62,6 +73,8 @@ void loop() {
 	}
 }
 </code>
+
+
 
 <table>
 	<tr><th>When OUTPUT is HIGH(led is blinking red)</th>
