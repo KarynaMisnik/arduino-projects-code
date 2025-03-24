@@ -258,6 +258,29 @@ void loop() {
 </td></tr>
 </table>
 
+
+<code>int ledPin = 2; // LED connected to digital pin 2
+int inPin = 7; // pushbutton connected to digital pin 7
+int val = 0; // variable to store the read value
+void setup() {
+pinMode(ledPin, OUTPUT); // sets the digital pin 2 as output
+pinMode(inPin, INPUT); // sets the digital pin 7 as input
+}
+void loop() {
+val = digitalRead(inPin); // read the input pin
+digitalWrite(ledPin, val); // sets the LED to the button's value
+}
+</code>
+
+> Button not pressed: pin 7 will read HIGH and LED will stay OFF.
+> 
+> Button pressed: pin 7 will read LOW, and the LED will turn ON.
+> 
+> The "Latch" function in simulation tools like UnoArduSim is typically used to simulate the button being pressed without having to physically hold it down.
+> 
+> With Latch: The button pin will act like it’s being held down (pressed) without needing to continuously press it.
+> When you enable the latch, the button state >will stay LOW until you manually reset it or disable the latch. 
+
 ## Traffic Lights with pedestrian
 
 <details>
