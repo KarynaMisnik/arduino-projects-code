@@ -633,6 +633,8 @@ This allows data to be sent and received via the Serial Monitor </td></tr>
 <code>delay(1000); </code>pauses execution for 1000 milliseconds (1 second) before repeating.</td></tr>
 </table>
 
+#### Transmitting serial data
+
 ## Traffic Lights with pedestrian
 
 <details>
