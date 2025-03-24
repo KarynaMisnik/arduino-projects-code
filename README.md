@@ -196,36 +196,29 @@ This method is commonly used in circuits where multiple LEDs share a common posi
 <code>int carRed = 12;    // Car traffic light pins
 int carYellow = 11;
 int carGreen = 10;
-
 int shortDelay = 200;  // 200ms delay
 int longDelay = 500;   // 500ms delay
-
 void setup() {
   pinMode(carRed, OUTPUT);
   pinMode(carYellow, OUTPUT);
   pinMode(carGreen, OUTPUT);
   digitalWrite(carGreen, HIGH);  // Start with green light ON
 }
-
 void loop() {
   changeLights();
 }
-
 void changeLights() {
   // Green → Yellow → Red
   digitalWrite(carGreen, LOW);   // Turn off Green
   digitalWrite(carYellow, HIGH); // Turn on Yellow
   delay(shortDelay);
-  
   digitalWrite(carYellow, LOW);  // Turn off Yellow
   digitalWrite(carRed, HIGH);    // Turn on Red
   delay(longDelay);
-
   // Red → Yellow → Green
   digitalWrite(carRed, LOW);     // Turn off Red
   digitalWrite(carYellow, HIGH); // Turn on Yellow
   delay(shortDelay);
-
   digitalWrite(carYellow, LOW);  // Turn off Yellow
   digitalWrite(carGreen, HIGH);  // Turn on Green
   delay(longDelay);
@@ -237,10 +230,41 @@ void changeLights() {
 <details>
   <summary>Source</summary>
 	
- <a href="https://www.dfrobot.com/blog-595.html">Arduino Docs</a>  
+ <a href="https://docs.arduino.cc/language-reference/en/functions/digital-io/digitalread/">Arduino Docs</a>  
   </details>
+  
+> when the button is pushed, the input pin will go to LOW
+
+<code>int btn = 2;   // Button connected to pin 2
+int led = 13;  // LED connected to pin 13
+void setup() {
+  pinMode(btn, INPUT_PULLUP); // Use internal pull-up resistor
+  pinMode(led, OUTPUT);
+}
+void loop() {
+  if (digitalRead(btn) == LOW) { // Button is pressed
+    digitalWrite(led, HIGH);     // Turn LED ON
+  } else {
+    digitalWrite(led, LOW);      // Turn LED OFF
+  }
+}
+</code>
+
+<table>
+	<tr><th>When OUTPUT is HIGH(button is not pressed, led is OFF)</th>
+	<th>When OUTPUT is LOW(button is pressed, led is ON)</th></tr>
+	<tr><td><img width=400 height=auto src='https://github.com/user-attachments/assets/c6e62f20-07f4-4aaf-abcc-6c7b54b693aa'></td>
+	<td><img width=400 height=auto src='https://github.com/user-attachments/assets/2bdc9f12-338e-48fa-80ae-7fae1783456a'>
+</td></tr>
+</table>
 
 ## Traffic Lights with pedestrian
+
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://www.dfrobot.com/blog-595.html">Arduino Docs</a>  
+  </details>
 
 <code>int carRed = 12; //assign the car lights
 	int carYellow = 11;
