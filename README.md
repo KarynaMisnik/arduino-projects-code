@@ -19,7 +19,8 @@ Menu:
 * [Question 2](#question-2)
 * [Question 3](#question-3)
 * [Question 4](#question-4)
-  -[Using Two Pushbuttons](#using-two-pushbuttons)
+  - [Using Two Pushbuttons](#using-two-pushbuttons)
+* [Serial Monitor](#serial-monitor)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
@@ -312,8 +313,6 @@ In this configuration, the input pin is LOW when the button is not pressed, and 
 
 <ins>Active-Low Button (Button Connects to GND when Pressed):</ins>
 
-## Traffic Lights with pedestrian
-
 In this case, we will use an internal pull-up resistor (<code>INPUT_PULLUP</code>) on the input pin.
 
 Button **not pressed:** Pin reads **HIGH** (because the internal pull-up resistor pulls it to **HIGH**).
@@ -558,6 +557,11 @@ void loop() {
   </tbody>
 </table>
 
+## Serial Monitor
+
+
+
+## Traffic Lights with pedestrian
 
 <details>
   <summary>Source</summary>
