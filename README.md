@@ -17,6 +17,7 @@ Menu:
 * [Traffic Lights](#traffic-lights)
 * [Pushbutton](#pushbutton)
 * [Question 2](#question-2)
+* [Question 3](#question-3)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
@@ -110,8 +111,6 @@ void loop() {
 	}
 }
 </code>
-
-
 
 <table>
 	<tr><th>When OUTPUT is HIGH(led is blinking red)</th>
@@ -259,7 +258,6 @@ void loop() {
 </td></tr>
 </table>
 
-
 <code>int ledPin = 2; // LED connected to digital pin 2
 int inPin = 7; // pushbutton connected to digital pin 7
 int val = 0; // variable to store the read value
@@ -400,6 +398,37 @@ Falling Edge (Release): LED ON when released</td></tr>
 
 <li>The LED turns on depending on whether the input pin goes HIGH or LOW based on the button's state.</li>
 </ul>
+
+## Question 3
+
+>“Properties of Pins Configured as INPUT”. What happens to the PIN voltage level if you have nothing connected to it?
+
+**Floating Pin:**
+
+When a pin is configured as **INPUT** and nothing is connected to it, the pin is **"floating"**.
+
+This means that the voltage on the pin is <ins>undefined</ins> and can fluctuate randomly due to electrical noise or capacitance in the environment.
+
+As a result, the pin will read unpredictable values—sometimes **HIGH**, sometimes **LOW**.
+
+## Question 4
+
+> What is the “INPUT_PULLUP” option?
+
+The <code>INPUT_PULLUP</code> option in Arduino configures a pin as an input with an internal pull-up resistor enabled.
+
+**Internal Pull-Up Resistor:** It connects the input pin to **HIGH** (usually 5V) by default through an internal resistor (typically 20kΩ to 50kΩ).
+
+**Pin Behavior:**
+
+When the pin is not connected or floating, it will read **HIGH** (because of the pull-up resistor).
+When the pin is connected to **GND** (e.g., when a button is pressed), it will read **LOW**.
+
+It eliminates the need for an external resistor to keep the input pin in a defined state when no button or sensor is connected. It's especially useful for buttons or switches that connect the pin to **GND** when pressed.
+
+<code>pinMode(buttonPin, INPUT_PULLUP);  // Use internal pull-up resistor</code>
+
+> This ensures the pin will be HIGH when the button is not pressed and LOW when the button is pressed (connected to GND).
 
 <details>
   <summary>Source</summary>
