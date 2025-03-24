@@ -559,6 +559,48 @@ void loop() {
 
 ## Serial Monitor
 
+**8 Data Bits, 1 Stop Bit, No Parity Bit (8N1)**
+
+This describes the frame format used in serial communication.
+
+<ins>8 Data Bits</ins> → Each transmitted data packet consists of 8 bits (1 byte).
+
+<ins>1 Stop Bit</ins> → A stop bit is used to signal the end of a transmission (it allows the receiver to know when a new data frame starts).
+
+<ins>No Parity Bit</ins> → Parity is used for error checking, but in this case, it is not used (hence, "No Parity").
+
+> "8N1" is a common serial format, meaning:
+
+<code>[Start Bit] + 8 Data Bits + [No Parity] + 1 Stop Bit</code>
+
+**Baud Rate vs. Bit Speed**
+
+These terms relate to the speed of communication between devices.
+
+<ins>Baud Rate</ins> → The number of symbols (signals) transmitted per second.
+
+<ins>Bit Speed</ins> → The number of bits transmitted per second.
+
+**Why Are They Different?**
+
+If each symbol represents one bit, then baud rate = bit speed.
+
+Some communication protocols use multiple bits per symbol, making the bit speed higher than the baud rate.
+
+> Note: In Arduino Serial Communication, baud rate (e.g., 9600 baud) typically equals bit speed (9600 bits per second).
+
+**How This Affects UnoArduSim?**
+
+When configuring the Serial Monitor in UnoArduSim, you need to set:
+<ul>
+	<li>Baud rate (must match Serial.begin(baudRate); in code).
+</li>
+	<li>8N1 as the frame format (default for Arduino).
+</li>
+	<li>Make sure to open the Serial Monitor after uploading the code.
+</li>
+</ul>
+
 
 
 ## Traffic Lights with pedestrian
