@@ -16,6 +16,7 @@ Menu:
 * [Question 1](#question-1)
 * [Traffic Lights](#traffic-lights)
 * [Pushbutton](#pushbutton)
+* [Question 2](#question-2)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
@@ -279,9 +280,126 @@ digitalWrite(ledPin, val); // sets the LED to the button's value
 > The "Latch" function in simulation tools like UnoArduSim is typically used to simulate the button being pressed without having to physically hold it down.
 > 
 > With Latch: The button pin will act like it’s being held down (pressed) without needing to continuously press it.
-> When you enable the latch, the button state >will stay LOW until you manually reset it or disable the latch. 
+> When you enable the latch, the button state >will stay LOW until you manually reset it or disable the latch.
+
+## Question 2
+
+> What combinations of the LED resistor configuration and the pushbutton rising/falling signal make the LED light up?
+
+**LED Resistor Configuration:**
+
+<ins>Current-limiting resistor:</ins> This resistor is placed in series with the LED to prevent excessive current from damaging the LED. The value of this resistor depends on the operating voltage of the LED and the voltage provided by the Arduino pin.
+
+The LED will only light up when there is a voltage difference across it, with the correct current flowing through it.
+
+**Pushbutton Signal:**
+
+<ins>Rising edge:</ins> A transition from LOW to HIGH. This occurs when the button is released (assuming an active-low configuration).
+
+<ins>Falling edge:</inss> A transition from HIGH to LOW. This occurs when the button is pressed (again assuming an active-low configuration).
+
+**Button Signal Configurations:**
+
+<ins>Active-Low (Most Common for Buttons):</ins>
+
+In this configuration, the input pin is HIGH when the button is not pressed (due to a pull-up resistor), and the input pin goes LOW when the button is pressed.
+
+<ins>Active-High (Less Common):</ins>
+
+In this configuration, the input pin is LOW when the button is not pressed, and the input pin goes HIGH when the button is pressed.
+
+**Combinations of Pushbutton Signal and LED Resistor Configurations:**
+
+<ins>Active-Low Button (Button Connects to GND when Pressed):</ins>
 
 ## Traffic Lights with pedestrian
+
+In this case, we will use an internal pull-up resistor (<code>INPUT_PULLUP</code>) on the input pin.
+
+Button **not pressed:** Pin reads **HIGH** (because the internal pull-up resistor pulls it to **HIGH**).
+
+Button **pressed:** Pin reads **LOW** (because the button connects the pin to **GND**).
+
+**LED Behavior:**
+
+<table>
+	<tr><th>    With Rising Edge (Button Released):
+</th>
+	<th>With Falling Edge (Button Pressed):</th></tr>
+	<tr><td> The LED will turn ON when the input pin transitions from LOW to HIGH (button is released), assuming that the LED is connected to the pin that will turn HIGH on release.</td><td>The LED will turn ON when the input pin transitions from HIGH to LOW (button is pressed), assuming that the LED is connected to the pin that will turn LOW on press.</td></tr>
+</table>
+
+**Circuit Example (Active-Low):**
+
+<code>int ledPin = 2; // LED connected to digital pin 2
+int btnPin = 7; // Button connected to digital pin 7
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(btnPin, INPUT_PULLUP); // Use internal pull-up resistor
+}
+void loop() {
+  if (digitalRead(btnPin) == LOW) { // Button is pressed (LOW)
+    digitalWrite(ledPin, HIGH);     // Turn on the LED
+  } else {
+    digitalWrite(ledPin, LOW);      // Turn off the LED
+  }
+}
+</code>
+
+> LED lights up when button is pressed, because the button is active-low (pin reads LOW when pressed).
+
+**Active-High Button (Button Connects to VCC when Pressed):**
+
+In this case, we do not use the internal pull-up resistor, so the input pin will need a pull-down resistor to ensure a known **LOW** state when the button is not pressed.
+
+Button **not pressed:** Pin reads **LOW** (due to the pull-down resistor).
+
+Button **pressed:** Pin reads **HIGH** (button connects pin to VCC).
+
+**LED Behavior:**
+
+<table>
+	<tr><th>With Rising Edge (Button Pressed):</th><th>With Falling Edge (Button Released):</th></tr>
+	<tr><td>The LED will turn ON when the input pin transitions from LOW to HIGH (button is pressed), assuming the LED is connected to the pin that turns HIGH on button press.</td><td>The LED will turn ON when the input pin transitions from HIGH to LOW (button is released), assuming the LED is connected to the pin that turns LOW on button release.</td></tr>
+</table>
+
+**Circuit Example (Active-High):**
+
+<code>int ledPin = 2; // LED connected to digital pin 2
+int btnPin = 7; // Button connected to digital pin 7
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  pinMode(btnPin, INPUT); // Use external pull-down resistor to keep pin LOW when button is not pressed
+}
+void loop() {
+  if (digitalRead(btnPin) == HIGH) { // Button is pressed (HIGH)
+    digitalWrite(ledPin, HIGH);      // Turn on the LED
+  } else {
+    digitalWrite(ledPin, LOW);       // Turn off the LED
+  }
+}
+</code>
+
+>LED lights up when the button is pressed, because the button is active-high (pin reads HIGH when pressed).
+
+**Summary of LED Light-Up Combinations:**
+<table>
+	<tr><th>Button Configuration</th><th>Button Behavior</th><th>LED Behavior (Rising/Falling Edge)</th></tr>
+	<tr><td>Active-Low (with pull-up)</td><td>Button pressed = LOW</td><td>Rising Edge (Release): LED ON when released
+Falling Edge (Press): LED ON when pressed</td></tr>
+	<tr><td>Active-High (with pull-down)</td><td>Button pressed = HIGH</td><td>Rising Edge (Press): LED ON when pressed
+Falling Edge (Release): LED ON when released</td></tr>
+</table>
+
+**Key Points to Remember:**
+
+<ul>
+<li>Active-Low is more common in button circuits, using internal pull-up resistors.</li>
+
+<li>Active-High can be used with a pull-down resistor for defining the LOW state when the button is not pressed.</li>
+
+<li>The LED turns on depending on whether the input pin goes HIGH or LOW based on the button's state.</li>
+</ul>
 
 <details>
   <summary>Source</summary>
