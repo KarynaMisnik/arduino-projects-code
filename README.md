@@ -21,6 +21,7 @@ Menu:
 * [Question 4](#question-4)
   - [Using Two Pushbuttons](#using-two-pushbuttons)
 * [Serial Monitor](#serial-monitor)
+  - [Transmitting serial data](#transmitting-serial-data)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
