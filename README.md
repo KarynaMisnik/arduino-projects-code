@@ -18,6 +18,8 @@ Menu:
 * [Pushbutton](#pushbutton)
 * [Question 2](#question-2)
 * [Question 3](#question-3)
+* [Question 4](#question-4)
+  -[Using Two Pushbuttons](#using-two-pushbuttons)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
@@ -429,6 +431,133 @@ It eliminates the need for an external resistor to keep the input pin in a defin
 <code>pinMode(buttonPin, INPUT_PULLUP);  // Use internal pull-up resistor</code>
 
 > This ensures the pin will be HIGH when the button is not pressed and LOW when the button is pressed (connected to GND).
+
+#### Using Two Pushbuttons
+
+In programming, variables are used for temporary storage of data. They loose their values when the program finishes, typically in an embedded environment this means the microcontroller is reset or powered off.
+In the Arduino programming language, integer-type variables are used primarily for storing **16-bit** whole numbers. The most commonly used integer type in Arduino is int.
+
+> Write a program which reads two pushbuttons and controls one LED. 
+> Note: // The input pins shall be latched and use pull-down resistors (transition to high)
+> //the output LED shall have resistor to Ground
+
+**LED lights up when both buttons are pressed (AND condition)**
+
+<code>int btn1 = 7; // Button 1 connected to pin 7
+int btn2 = 6; // Button 2 connected to pin 6
+int ledPin = 2; // LED connected to pin 2
+void setup() {
+  pinMode(btn1, INPUT); // Button 1 with pull-down resistor
+  pinMode(btn2, INPUT); // Button 2 with pull-down resistor
+  pinMode(ledPin, OUTPUT); // LED pin as output
+}
+void loop() {
+  // Read button states
+  int stateBtn1 = digitalRead(btn1);
+  int stateBtn2 = digitalRead(btn2);
+  // If both buttons are pressed, light up the LED
+  if (stateBtn1 == HIGH && stateBtn2 == HIGH) {
+    digitalWrite(ledPin, HIGH); // Turn on LED
+  } else {
+    digitalWrite(ledPin, LOW); // Turn off LED
+  }
+}
+</code>
+
+> The LED shall light up either when both buttons have been pressed, or only one of them has been pressed.
+
+**Truth table**
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Button 1</th>
+      <th>Button 2</th>
+      <th>LED (AND Condition)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LOW</td>
+      <td>LOW</td>
+      <td>HIGH</td> <!-- LED on when both buttons are pressed -->
+    </tr>
+    <tr>
+      <td>LOW</td>
+      <td>HIGH</td>
+      <td>LOW</td> <!-- LED off if button 2 is not pressed -->
+    </tr>
+    <tr>
+      <td>HIGH</td>
+      <td>LOW</td>
+      <td>LOW</td> <!-- LED off if button 1 is not pressed -->
+    </tr>
+    <tr>
+      <td>HIGH</td>
+      <td>HIGH</td>
+      <td>LOW</td> <!-- LED off if neither button is pressed -->
+    </tr>
+  </tbody>
+</table>
+
+
+**LED lights up when one or both buttons are pressed (OR condition)**
+
+<code>int btn1 = 7; // Button 1 connected to pin 7
+int btn2 = 6; // Button 2 connected to pin 6
+int ledPin = 2; // LED connected to pin 2
+void setup() {
+  pinMode(btn1, INPUT); // Button 1 with pull-down resistor
+  pinMode(btn2, INPUT); // Button 2 with pull-down resistor
+  pinMode(ledPin, OUTPUT); // LED pin as output
+}
+void loop() {
+  // Read button states
+  int stateBtn1 = digitalRead(btn1);
+  int stateBtn2 = digitalRead(btn2);
+  // If either button is pressed, light up the LED
+  if (stateBtn1 == HIGH || stateBtn2 == HIGH) {
+    digitalWrite(ledPin, HIGH); // Turn on LED
+  } else {
+    digitalWrite(ledPin, LOW); // Turn off LED
+  }
+}
+</code>
+
+**Truth table**
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Button 1</th>
+      <th>Button 2</th>
+      <th>LED (OR Condition)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LOW</td>
+      <td>LOW</td>
+      <td>HIGH</td> <!-- LED on when either button 1 or button 2 is pressed -->
+    </tr>
+    <tr>
+      <td>LOW</td>
+      <td>HIGH</td>
+      <td>HIGH</td> <!-- LED on if button 2 is pressed -->
+    </tr>
+    <tr>
+      <td>HIGH</td>
+      <td>LOW</td>
+      <td>HIGH</td> <!-- LED on if button 1 is pressed -->
+    </tr>
+    <tr>
+      <td>HIGH</td>
+      <td>HIGH</td>
+      <td>HIGH</td> <!-- LED on if both buttons are pressed -->
+    </tr>
+  </tbody>
+</table>
+
 
 <details>
   <summary>Source</summary>
