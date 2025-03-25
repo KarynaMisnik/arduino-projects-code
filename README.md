@@ -31,6 +31,7 @@ Menu:
 * [Bit-level access](#bit-level-access)
 * [Negative Values](#negative-values)
 * [Selecting a single bit from a group of 8 bits](#selecting-a-single-bit-from-a-group-of-8-bits)
+* [7 segment display](#7-segment-display)
 
  ## Basic Code Editing
 
@@ -1339,10 +1340,42 @@ void loop() {
 </code>
 
 
+<details>
+  <summary>Bit Math with Arduino</summary>
+	
+ <a href="https://docs.arduino.cc/learn/programming/bit-math/">Bit Math</a>  
+  </details>
 
+## 7 segment display
 
+**Example:**
 
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://stackoverflow.com/questions/58578583/how-to-use-seven-segment-in-unoardusim">Stackoverflow</a>  
+  </details>
 
+<code>// pins from 4 to 8
+void setup()
+{
+    // Set the pins 4 to 8 as OUTPUT for controlling the segments A to G
+    for (int i = 4; i <= 8; i++) {
+        pinMode(i, OUTPUT);
+    }
+}
+void loop()
+{
+    // Loop through numbers 0-9 and letters A-F (Hexadecimal)
+    for (int digit = 0; digit <= 15; digit++) {
+        // Loop through pins 4 to 8 (A to G) and set their state based on the digit
+        for (int pin = 4; pin <= 8; pin++) {
+            digitalWrite(pin, (bool)(digit & (1 << (pin - 4)))); // Set the pin based on bit pattern
+        }
+        delay(1000); // Wait for 1 second to show the next digit
+    }
+}
+    </code>
 
 
 
