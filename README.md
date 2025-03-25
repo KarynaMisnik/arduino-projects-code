@@ -25,7 +25,8 @@ Menu:
   - [Receiving serial data](#receiving-serial-data)
 * [Question 5](#question-5)
 * [Read an input from a user](#read-an-input-from-a-user)
-* [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
+* [Traffic Lights with pedestrian, pushbutton](#traffic-ights-with-pedestrian-pushbutton)
+* [Delay as Input from User](#delay-as-input-from-user)
 
  ## Basic Code Editing
 
@@ -53,7 +54,7 @@ void loop() {
 }
 </code>
 
-## Blinking LED
+## 🚨 Blinking LED
 
 #### using delay()
 **Code**
@@ -196,7 +197,7 @@ When the pin is set HIGH, no voltage difference exists across the LED, so it sta
 
 This method is commonly used in circuits where multiple LEDs share a common positive voltage (VCC) and are individually controlled by grounding the cathode through a microcontroller pin.
 
-## Traffic Lights
+## 🚦🚙 Traffic Lights
 
 > Traffic light: use 3 Coloured LEDs to create a traffic light
 
@@ -848,7 +849,7 @@ void loop() {
 }
 </code>
 
-## Traffic Lights with pedestrian
+## 🚦🚙🚶 Traffic Lights with pedestrian pushbutton
 
 <details>
   <summary>Source</summary>
@@ -856,59 +857,162 @@ void loop() {
  <a href="https://www.dfrobot.com/blog-595.html">Arduino Docs</a>  
   </details>
 
-<code>int carRed = 12; //assign the car lights
-	int carYellow = 11;
-	int carGreen = 10;
-	int button = 9; //button pin
-	int pedRed = 8; //assign the pedestrian lights
-	int pedGreen = 7;
-	int crossTime =5000; //time for pedestrian to cross
-	unsigned long changeTime;//time since button pressed
- void setup() {
+> Add a pushbutton for pedestrians. When the button is pushed, the Red LED lights up (other LEDs are off). This lasts for 10 seconds , after which the normal LED > pattern resumes.
+> Note that the button must be pushed as long as it takes for the loop() function to complete one turn.
+> At this point we have not dealt with interrupts, which would allow us to immediately detect the pushing of a button.
+> Then, add two more LEDs (red and green) for the pedestrian crossing. These would be for the people walking (pedestrians), not the cars driving by.
+
+<code>int carRed = 12;    
+int carYellow = 11;
+int carGreen = 10;
+int button = 9;     
+int pedRed = 8;     
+int pedGreen = 7;
+int crossTime = 10000; // Pedestrian crossing time (10 seconds)
+bool pedestrianRequested = false;
+void setup() {
+  pinMode(carRed, OUTPUT);
+  pinMode(carYellow, OUTPUT);
+  pinMode(carGreen, OUTPUT);
+  pinMode(pedRed, OUTPUT);
+  pinMode(pedGreen, OUTPUT);
+  pinMode(button, INPUT_PULLUP); // Enable internal pull-up resistor
+  // Initial state: Cars green, Pedestrians red
+  digitalWrite(carGreen, HIGH);
+  digitalWrite(pedRed, HIGH);
+}
+void loop() {
+  // Check if pedestrian button is pressed
+  if (digitalRead(button) == LOW) {
+    pedestrianRequested = true; // Set flag
+  }
+  // If no pedestrian request, follow normal traffic cycle
+  if (!pedestrianRequested) {
+    normalTrafficCycle();
+  } else {
+    pedestrianCrossing();  // Handle pedestrian crossing
+  }
+}
+// Normal car traffic cycle (Green → Yellow → Red → Yellow → Green)
+void normalTrafficCycle() {
+  digitalWrite(carGreen, HIGH);
+  digitalWrite(carYellow, LOW);
+  digitalWrite(carRed, LOW);
+  delay(5000);
+  digitalWrite(carGreen, LOW);
+  digitalWrite(carYellow, HIGH);
+  delay(2000);
+  digitalWrite(carYellow, LOW);
+  digitalWrite(carRed, HIGH);
+  delay(5000);
+  // Red → Yellow → Green
+  digitalWrite(carRed, LOW);
+  digitalWrite(carYellow, HIGH);
+  delay(2000);
+  digitalWrite(carYellow, LOW);
+  digitalWrite(carGreen, HIGH);
+}
+// Handle pedestrian crossing sequence
+void pedestrianCrossing() {
+  // Stop cars
+  digitalWrite(carGreen, LOW);
+  digitalWrite(carYellow, HIGH);
+  delay(2000);
+  digitalWrite(carYellow, LOW);
+  digitalWrite(carRed, HIGH);
+  delay(1000); 
+  // Allow pedestrians to cross
+  digitalWrite(pedRed, LOW);
+  digitalWrite(pedGreen, HIGH);
+  delay(crossTime);
+  // Flash pedestrian green before stopping crossing
+  for (int x = 0; x < 10; x++) {
+    digitalWrite(pedGreen, HIGH);
+    delay(250);
+    digitalWrite(pedGreen, LOW);
+    delay(250);
+  }
+  // Stop pedestrians
+  digitalWrite(pedRed, HIGH);
+  delay(500);
+  // Red → Yellow → Green
+  digitalWrite(carRed, LOW);
+  digitalWrite(carYellow, HIGH);
+  delay(2000);
+  digitalWrite(carYellow, LOW);
+  digitalWrite(carGreen, HIGH);
+  pedestrianRequested = false; // Reset pedestrian request
+}
+
+ </code>
+
+ ## 🚦 Delay as Input from User
+
+> Improve the program: it uses the Serial Monitor to:
+> • It asks the user to enter the delays or accept default delays
+> o this is done once, when the program starts
+> o after waiting for 10-20 seconds, the default delays are used if new delays are not
+entered
+> • print out messages to the Serial Monitor which tell something about what the program is
+doing
+
+<code>int carRed = 12;    
+int carYellow = 11;
+int carGreen = 10;
+int defaultGreenTime = 5000;
+int defaultYellowTime = 2000;
+int defaultRedTime = 5000;
+int greenTime, yellowTime, redTime;
+unsigned long startTime;
+void setup() {
+	Serial.begin(9600);
 	pinMode(carRed, OUTPUT);
 	pinMode(carYellow, OUTPUT);
 	pinMode(carGreen, OUTPUT);
-	pinMode(pedRed, OUTPUT);
-	pinMode(pedGreen, OUTPUT);
-	pinMode(button, INPUT);
-	digitalWrite(carGreen, HIGH); //turn on the green lights
-	digitalWrite(pedRed, HIGH);
+	Serial.println("Traffic Light System");
+	Serial.println("Enter delays in milliseconds (Green, Yellow, Red).");
+	Serial.println("Example: 5000 2000 5000");
+	Serial.println("Waiting for input... (20 seconds)");
+	startTime = millis();
+	while (millis() - startTime < 20000) {
+		if (Serial.available()) {
+			greenTime = Serial.parseInt();
+			yellowTime = Serial.parseInt();
+			redTime = Serial.parseInt();
+			if (greenTime > 0 && yellowTime > 0 && redTime > 0) {
+				Serial.println("Custom delays set!");
+				break;
+			}
+		}
 	}
- 	void loop() {
-	int state = digitalRead(button);
-	//check if button is pressed and it is over 5 seconds since last button press
-	if(state == HIGH && (millis() - changeTime)> 5000){
-	//call the function to change the lights
-	changeLights();
+	if (greenTime == 0 || yellowTime == 0 || redTime == 0) {
+		Serial.println("No input received. Using default delays.");
+		greenTime = defaultGreenTime;
+		yellowTime = defaultYellowTime;
+		redTime = defaultRedTime;
 	}
-	}
- void changeLights() {
-	digitalWrite(carGreen, LOW); //green off
-	digitalWrite(carYellow, HIGH); //yellow on
-	delay(2000); //wait 2 seconds
- digitalWrite(carYellow, LOW); //yellow off
-	digitalWrite(carRed, HIGH); //red on
-	delay(1000); //wait 1 second till its safe
- digitalWrite(pedRed, LOW); //ped red off
-	digitalWrite(pedGreen, HIGH); //ped green on
-	delay(crossTime); //wait for preset time period
- 	//flash the ped green
-	for (int x=0; x<10; x++) {
-	digitalWrite(pedGreen, HIGH);
-	delay(250);
-	digitalWrite(pedGreen, LOW);
-	delay(250);
-	}
- digitalWrite(pedRed, HIGH);//turn ped red on
-	delay(500);
- digitalWrite(carRed, LOW); //red off
-	digitalWrite(carYellow, HIGH); //yellow on
-	delay(1000);
-	digitalWrite(carYellow, LOW); //yellow off
-	digitalWrite(carGreen, HIGH); 
- changeTime = millis(); //record the time since last change of lights
-	//then return to the main program loop
-	}
- </code>
-
-
+	Serial.print("Green Time: "); Serial.print(greenTime); Serial.println("ms");
+	Serial.print("Yellow Time: "); Serial.print(yellowTime); Serial.println("ms");
+	Serial.print("Red Time: "); Serial.print(redTime); Serial.println("ms");
+}
+void loop() {
+	Serial.println("Green Light ON");
+	digitalWrite(carGreen, HIGH);
+	digitalWrite(carYellow, LOW);
+	digitalWrite(carRed, LOW);
+	delay(greenTime);
+	Serial.println("Yellow Light ON");
+	digitalWrite(carGreen, LOW);
+	digitalWrite(carYellow, HIGH);
+	delay(yellowTime);
+	Serial.println("Red Light ON");
+	digitalWrite(carYellow, LOW);
+	digitalWrite(carRed, HIGH);
+	delay(redTime);
+	Serial.println("Yellow Light ON (Before Green)");
+	digitalWrite(carRed, LOW);
+	digitalWrite(carYellow, HIGH);
+	delay(yellowTime);
+	Serial.println("Restarting Cycle...");
+}
+</code>
