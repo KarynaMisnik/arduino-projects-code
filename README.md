@@ -24,6 +24,7 @@ Menu:
   - [Transmitting serial data](#transmitting-serial-data)
   - [Receiving serial data](#receiving-serial-data)
 * [Question 5](#question-5)
+* [Read an input from a user](#read-an-input-from-a-user)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
@@ -801,7 +802,7 @@ void loop() {
 
 ## Question 5
 
->  what the readStringUntil() method does?
+>  What the readStringUntil() method does?
 
 The Serial.readStringUntil(char terminator) method reads characters from the serial buffer until:
 
@@ -809,7 +810,43 @@ The specified terminator character is encountered.
 
 The timeout <code>(Serial.setTimeout())</code> expires.
 
+## Read an input from a user
 
+> reads input from the serial monitor;
+> prints output to the serial monitor;
+
+<table>
+<tr><th>Input</th><th>Output</th></tr>
+	<tr><td>red</td><td>yellow</td><td>green</td></tr>
+	<tr><td>yellow</td><td>red</td><td>green</td></tr>
+</table>
+
+> Notr: If the read data is something else than one of the options above, an error message is printed.
+
+<code>void setup() {
+    Serial.begin(9600);  // Start serial communication
+    Serial.setTimeout(500);  // Set timeout for Serial.readString()
+}
+void loop() {
+    Serial.println("Enter a color (red, yellow, green):");
+    if (Serial.available() > 0) {  // Check if data is available
+        String input = Serial.readStringUntil('\n');  // Read input until newline
+        input.trim();  // Remove any extra spaces or newlines
+        // Check the input and print the corresponding output
+        if (input == "red") {
+            Serial.println("Output: yellow");
+        } else if (input == "yellow") {
+            Serial.println("Output: green");
+        } else if (input == "green") {
+            Serial.println("Output: red");
+        } else {
+            Serial.println("Error: Invalid input!");
+        }
+    }
+
+    delay(500);  // Small delay to prevent spamming the Serial Monitor
+}
+</code>
 
 ## Traffic Lights with pedestrian
 
