@@ -32,6 +32,8 @@ Menu:
 * [Negative Values](#negative-values)
 * [Selecting a single bit from a group of 8 bits](#selecting-a-single-bit-from-a-group-of-8-bits)
 * [7 segment display](#7-segment-display)
+* [Analog signals](#analog-signals)
+* [Question 6](#question-6)
 
  ## Basic Code Editing
 
@@ -1377,14 +1379,70 @@ void loop()
 }
     </code>
 
+## Analog signals
 
 
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://docs.arduino.cc/learn/microcontrollers/analog-input/">Analog Input Pins</a>  
+  </details>
+
+**Example:**
+
+<code>int ledPin = 9; // LED connected to digital pin 9
+int analogPin = A0; // potentiometer connected to analog pin A0
+int val = 0; // variable to store the read value
+void setup() {
+  pinMode(ledPin, OUTPUT); // set LED pin as OUTPUT
+  pinMode(analogPin, INPUT); // set the analog pin as INPUT
+  Serial.begin(9600); // start the Serial Monitor at 9600 baud rate
+}
+void loop() {
+  val = analogRead(analogPin); // read the input pin (potentiometer)
+  Serial.println(val); // print the potentiometer value to the Serial Monitor
+  // Turn the LED on if the voltage on the pin is near 5V (1023 in analogRead)
+  if (val > 1000) { 
+    digitalWrite(ledPin, HIGH); // turn LED on
+  } else {
+    digitalWrite(ledPin, LOW); // turn LED off
+  }
+  delay(100); // small delay to avoid spamming the Serial Monitor
+}
+</code>
+
+**Explanation:**
+
+<code>analogPin = A0;</code>: The analog pin where the potentiometer is connected should be an analog input pin. On most Arduino boards, these are labeled as A0, A1, etc.
+<code>pinMode(ledPin, OUTPUT);</code>: The ledPin is set as an output because you're controlling an LED.
+<code>pinMode(analogPin, INPUT);</code>: The analog pin (A0 in this case) is set as an input because you're reading the value from the potentiometer.
+<code>val = analogRead(analogPin);</code>: Reads the analog value from the potentiometer. The value returned will be between 0 (0V) and 1023 (5V), as the Arduino converts the analog voltage into a 10-bit number.
+<code>Serial.println(val);</code>: Sends the value of the potentiometer to the Serial Monitor for viewing.
+
+**LED Control:**
+
+if (val > 1000): If the analog value is greater than 1000 (close to 5V), the LED will be turned on.
+<code>digitalWrite(ledPin, HIGH);</code>: Turns the LED on.
+<code>digitalWrite(ledPin, LOW);</code>: Turns the LED off.
+<code>delay(100);</code>: Adds a small delay to prevent flooding the Serial Monitor with too many readings.
+
+**How It Works:**
+
+The potentiometer gives a value between 0 (0V) and 1023 (5V).
+If the potentiometer's value is greater than 1000, the LED turns on (indicating the potentiometer is at or near 5V).
+If the value drops below 1000, the LED turns off.
+The value is printed on the Serial Monitor, which you can see in real-time.
+
+**Testing:**
+
+When the potentiometer is turned to its maximum (5V), the LED will turn on.
+When the potentiometer is turned to its minimum (0V), the LED will turn off.
+The serial monitor will display values ranging from 0 to 1023 depending on the position of the potentiometer.
 
 
+## Question 6
 
-
-
-
+> In what form does the analogRead() function return the analog voltage on the Pin?
 
 
 
