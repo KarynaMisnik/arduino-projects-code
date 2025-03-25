@@ -633,6 +633,38 @@ This allows data to be sent and received via the Serial Monitor </td></tr>
 <code>delay(1000); </code>pauses execution for 1000 milliseconds (1 second) before repeating.</td></tr>
 </table>
 
+> Print a single symbol:
+
+<code>int a = 'a';
+void setup(){
+Serial.begin(300);
+
+}
+void loop(){
+Serial.print(a);
+delay(2000);
+}</code>
+
+
+![printing-char](https://github.com/user-attachments/assets/178e5dae-b86e-44c2-bb82-0b95ba6ea9f4)
+
+**Idle State (HIGH)**
+
+The TX (transmit) pin sits at HIGH (1) when no data is being sent. This is the default idle state of UART communication.
+
+**Start Bit (LOW)**
+
+When sending a character like 'a', serial communication starts by sending a start bit, which is always LOW (0).
+
+**Data Bits (LSB First)**
+
+The binary representation of 97 ('a') is 0110 0001.
+But because UART sends data LSB (Least Significant Bit) first, the order is 1000 0110.
+
+**Stop Bit (HIGH)**
+
+After sending the data bits, a stop bit (always HIGH) is transmitted to signal the end of the byte.
+
 #### Transmitting serial data
 
 ## Traffic Lights with pedestrian
