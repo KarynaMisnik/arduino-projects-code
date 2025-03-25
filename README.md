@@ -633,20 +633,32 @@ This allows data to be sent and received via the Serial Monitor </td></tr>
 <code>delay(1000); </code>pauses execution for 1000 milliseconds (1 second) before repeating.</td></tr>
 </table>
 
+
+#### Transmitting serial data
+
 > Print a single symbol:
 
-<code>int a = 'a';
+<table>
+	<tr><th>Baude Rate 1200</th><th>Baude Rate 9600</th></tr>
+	<tr><td> <img width=300 height=auto src='https://github.com/user-attachments/assets/242b8eb0-eddb-40cc-813e-72bb8746248e'>
+</td>
+	<td><img width=300 height=auto src='https://github.com/user-attachments/assets/74b01254-2d42-4ed1-983c-3d1e5b29768e'></td></tr>
+	<tr><td><code>int a = 'a';
 void setup(){
-Serial.begin(300);
-
+Serial.begin(1200);
 }
 void loop(){
 Serial.print(a);
 delay(2000);
-}</code>
-
-
-![printing-char](https://github.com/user-attachments/assets/178e5dae-b86e-44c2-bb82-0b95ba6ea9f4)
+}</code></td><td><code>int a = 'a';
+void setup(){
+Serial.begin(9600);
+}
+void loop(){
+Serial.print(a);
+delay(2000);
+}</code></td></tr>
+</table>
 
 **Idle State (HIGH)**
 
@@ -665,7 +677,36 @@ But because UART sends data LSB (Least Significant Bit) first, the order is 1000
 
 After sending the data bits, a stop bit (always HIGH) is transmitted to signal the end of the byte.
 
-#### Transmitting serial data
+**How to Calculate the Time for a Single Bit?**
+
+The time for a single bit in serial communication is determined by the baud rate (bits per second). The formula is:
+
+Bit time = 1/Baud rate
+
+This gives us the duration of one bit in seconds.
+
+**Time for a Single Bit at 1200 baud**
+   
+Bit time = 1/1200​ seconds
+
+=0.0008333 seconds=0.8333 milliseconds=833.3 microseconds
+=0.0008333 seconds=0.8333 milliseconds=833.3 microseconds
+
+👉 Each bit lasts 833.3 µs (microseconds) at 1200 baud.
+
+**Time for a Single Bit at 9600 baud**
+
+Bit time = 1/9600 seconds
+
+=0.0001042 seconds=0.1042 milliseconds=104.2 microseconds
+
+👉 Each bit lasts 104.2 µs (microseconds) at 9600 baud.
+
+**What Does This Mean?**
+
+At 1200 baud, bits take **longer** to transmit (833.3 µs per bit), making them easier to observe in the waveform.
+
+At 9600 baud, bits are much **faster** (104.2 µs per bit), making them harder to see.
 
 ## Traffic Lights with pedestrian
 
