@@ -1444,12 +1444,38 @@ The serial monitor will display values ranging from 0 to 1023 depending on the p
 
 > In what form does the analogRead() function return the analog voltage on the Pin?
 
+The <code>analogRead()</code> function in Arduino returns the analog voltage from a specified analog pin in the form of an integer. This value represents the digital approximation of the analog voltage, mapped between 0 and 1023.
 
+**Breakdown:**
 
+The Arduino board uses a 10-bit ADC (Analog-to-Digital Converter) to convert the input analog voltage into a digital value.
+The ADC operates with a reference voltage (typically 5V on most Arduino boards, or 3.3V on some others).
+The analog value is mapped from the range of 0 to 1023.
 
+**Example:**
 
+0 corresponds to 0V (ground).
+1023 corresponds to the reference voltage (typically 5V).
 
+**Formula:**
 
+The analog value val returned by analogRead(pin) can be interpreted using the following formula:
+
+<code>voltage = (val / 1023.0) * referenceVoltage</code>
+
+**Where:**
+
+val is the value returned by analogRead()
+referenceVoltage is typically 5V (unless configured otherwise)
+
+**For example:**
+
+If analogRead() returns 512, that corresponds to approximately half of the reference voltage, i.e., around 2.5V (if using a 5V reference).
+
+<code>int sensorValue = analogRead(A0); // Read analog value from pin A0
+float voltage = sensorValue * (5.0 / 1023.0); // Convert to voltage (assuming 5V reference)
+Serial.println(voltage); // Print the voltage value
+</code>
 
 
 
