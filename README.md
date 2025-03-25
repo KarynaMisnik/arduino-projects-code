@@ -22,6 +22,8 @@ Menu:
   - [Using Two Pushbuttons](#using-two-pushbuttons)
 * [Serial Monitor](#serial-monitor)
   - [Transmitting serial data](#transmitting-serial-data)
+  - [Receiving serial data](#receiving-serial-data)
+* [Question 5](#question-5)
 * [Traffic Lights with pedestrian](#traffic-ights-with-pedestrian)
 
  ## Basic Code Editing
@@ -707,6 +709,107 @@ Bit time = 1/9600 seconds
 At 1200 baud, bits take **longer** to transmit (833.3 µs per bit), making them easier to observe in the waveform.
 
 At 9600 baud, bits are much **faster** (104.2 µs per bit), making them harder to see.
+
+#### Receiving serial data
+
+<code>void setup(){
+Serial.begin(9600);
+Serial.setTimeout(10000);
+}
+void loop(){
+Serial.println("Enter data:");
+while (Serial.available() == 0){
+} //wait for data available
+String teststr = Serial.readString(); //read until timeout
+teststr.trim(); // remove any \r \n whitespace at the end of the String
+if (teststr == "red"){
+Serial.println("A primary color");
+}else{
+Serial.println("Something else");
+}
+}</code>
+
+This code reads a string input from the Serial Monitor and checks if the user typed "red". If "red" is received, it prints "A primary color"; otherwise, it prints "Something else".
+
+1. <code>Serial.setTimeout(10000);</code>
+
+This function sets the timeout for serial reading functions (like <code>Serial.readString()</code>).
+
+10000 means 10 seconds. If no data is received within this time, <code>Serial.readString()</code> will return whatever it has received so far (even if it's incomplete).
+
+Without this, <code>readString()</code> could hang indefinitely if no data arrives.
+
+2. <code>while (Serial.available() == 0) { } // wait for data</code>
+
+This waits for the user to enter data.
+
+The program freezes here until at least one character is received in the Serial buffer.
+
+3. <code>String teststr = Serial.readString();</code>
+
+Reads the entire available input until a timeout occurs or the user presses Enter (<code>\n</code> or <code>\r</code>).
+
+Since <code>Serial.setTimeout(10000)</code> is used, if the user types nothing for 10 seconds, <code>Serial.readString()</code> will return an empty string.
+
+4. <code>teststr.trim();</code>
+Removes any extra whitespace, <code>\r</code>, or <code>\n</code> from the input.
+
+Why? When pressing Enter, Serial Monitor sends "\n" or "\r\n", which could mess up the comparison (teststr == "red").
+
+5. Checking the Input
+<code>if (teststr == "red") {
+    Serial.println("A primary color");
+} else {
+    Serial.println("Something else");
+}
+</code>
+
+If the user typed "red", it prints "A primary color".
+
+Otherwise, it prints "Something else".
+
+> What does the Serial.setTimeout() function call achieve? Is there an unnecessary delay in the code?
+
+Yes, there is a potential delay:
+
+<code>Serial.setTimeout(10000);</code> could cause up to 10 seconds of waiting if the user types nothing.
+
+This is unnecessary if we assume the user will always press Enter after typing.
+
+A lower timeout (e.g., 500 ms) would work better.
+
+**Optimized Code (Non-Blocking Approach)**
+
+<code>void setup() {
+    Serial.begin(9600);
+    Serial.setTimeout(500);  // Reduced timeout to 500ms instead of 10 seconds
+}
+void loop() {
+    Serial.println("Enter data:");
+    if (Serial.available() > 0) {  // Only proceed if there is input
+        String teststr = Serial.readString();
+        teststr.trim();  // Remove whitespace and newline characters
+        if (teststr == "red") {
+            Serial.println("A primary color");
+        } else {
+            Serial.println("Something else");
+        }
+    }
+    delay(500);  // Small delay to avoid spamming Serial Monitor
+}
+</code>
+
+## Question 5
+
+>  what the readStringUntil() method does?
+
+The Serial.readStringUntil(char terminator) method reads characters from the serial buffer until:
+
+The specified terminator character is encountered.
+
+The timeout <code>(Serial.setTimeout())</code> expires.
+
+
 
 ## Traffic Lights with pedestrian
 
