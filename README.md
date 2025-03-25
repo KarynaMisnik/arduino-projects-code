@@ -28,6 +28,9 @@ Menu:
 * [Traffic Lights with pedestrian, pushbutton](#traffic-ights-with-pedestrian-pushbutton)
 * [Custom Delay as a User Input in the beginning](#custom-delay-as-a-user-input-in-the-beginning)
 * [Custom Delay as a User Input at any time](#custom-delay-as-a-user-input-at-any-time)
+* [Bit-level access](#bit-level-access)
+* [Negative Values](#negative-values)
+* [Selecting a single bit from a group of 8 bits](#selecting-a-single-bit-from-a-group-of-8-bits)
 
  ## Basic Code Editing
 
@@ -1109,6 +1112,262 @@ void delayWithCheck(int duration) {
 	}
 }
 </code>
+
+## Bit-level access
+
+Bit operations play a crucial role in embedded systems for among others, the following reasons:
+
+• Memory Efficiency: Embedded systems often operate in resource-constrained environments
+with limited memory. Bit operations allow you to pack multiple binary flags or configuration
+options into a single memory location, conserving precious memory space.
+• I/O Control: Embedded systems frequently interact with various hardware peripherals and
+sensors, where individual bits in control registers configure and control device behavior. Bit
+manipulation is essential for setting, clearing, or toggling specific bits in these registers.
+• Interrupt Handling: In interrupt-driven systems, bit flags often signal various events or
+conditions. Efficiently managing and checking these flags is crucial for responding to events
+promptly and accurately.
+
+<details>
+  <summary>Source</summary>
+	
+ <a href="https://docs.arduino.cc/retired/hacking/software/PortManipulation/">To read more: Arduino PortManipulation, Docs</a>  
+  </details>
+
+>The UnoArduSim environment doesn’t support register manipulation, only the functions provided to set port/pin states are emulated.
+>We can however study bit operators by using a single char variable, manipulating that and printing the results to the Serial Monitor.
+
+**Example:**
+
+<code>unsigned char count;  // Declares an 8-bit unsigned character (0 to 255)
+void setup() {
+    count = 200;        // Initializes count to 200
+    Serial.begin(9600); // Starts the Serial Monitor at 9600 baud rate
+}
+void loop() {
+    count = count + 1;  // Increments count by 1
+    Serial.println(count, BIN); // Prints count in binary format
+    delay(1000);        // Waits 1 second
+}
+</code>
+
+**Program Output Example:**
+
+<code>11001001  // 201
+11001010  // 202
+11001011  // 203
+...
+11111111  // 255 (Max Value)
+00000000  // 0  (Overflow occurs!)
+00000001  // 1
+...
+</code>
+
+> Note: Since unsigned char is only 8 bits (0 to 255), after reaching 255, the next increment makes it wrap around to 0 (like a circular counter).
+
+## Negative Values
+
+**Modified code:**
+
+<code>char count;  // Changed from "unsigned char" to "char"
+void setup() {
+    count = 100;       // Changed from 200 to 100
+    Serial.begin(9600);
+}
+void loop() {
+    count = count + 1;  // Increment count by 1
+    Serial.println(count, BIN);  // Print count in binary format
+    delay(1000);
+}
+</code>
+
+**Program Output Example:**
+
+<code>01100101  // 101
+01100110  // 102
+...
+01111111  // 127 (Max value for signed char)
+10000000  // -128 (Overflow occurs!)
+10000001  // -127
+10000010  // -126
+...
+00000000  // 0
+00000001  // 1
+</code>
+
+**Changed unsigned char to char:**
+<ul>
+<li>unsigned char could hold values from 0 to 255.</li>
+<li>char (signed) holds values from -128 to 127. Now, count can store negative values</li>
+</ul>
+
+**What Happens in the Serial Monitor?**
+
+<ul>
+<li>The program increments count by 1 every second.</li>
+<li>When count reaches 127, it overflows to -128 because char is signed.</li>
+<li>    Then, count keeps increasing (-127, -126, ... 0, 1, 2, ...).</li>
+</ul>
+
+**Why Does This Happen?**
+
+Signed char uses 8-bit Two's Complement format:
+<ul>
+<li>Positive numbers: 0 to 127 (00000000 to 01111111).</li>
+<li>Negative numbers: -128 to -1 (10000000 to 11111111).</li>
+<li>When count goes above 127, it wraps around to -128.</li>
+</ul>
+
+## Selecting a single bit from a group of 8 bits
+
+**The bit-level & operation**
+
+The bitwise AND (&) operation performs a logical AND between corresponding bits of two numbers.
+
+🔹 How It Works (Bit-Level):
+
+It compares each bit of the first number with the corresponding bit of the second number.
+The result is 1 only if both bits are 1; otherwise, the result is 0.
+
+**Example:**
+
+<code>int a = 5;   // Binary:  00000101
+int b = 3;   // Binary:  00000011
+int c = a & b; // Bitwise AND
+Serial.println(c); // Output: 1
+</code>
+
+🔍 Step-by-Step (Bitwise Operation)
+
+<code>00000101  (5 in binary)
+&  00000011  (3 in binary)
+Result:
+   00000001  (1 in binary) → Result: 1
+</code>
+
+**Key Properties:**
+
+✔ Used to mask bits (turn off unwanted bits).
+✔ Can check if specific bits are set.
+✔ Often used for bitwise flags in embedded systems and microcontrollers.
+
+**Example:**
+
+<code>#define BITMASK 0x02  // BITMASK is defined as 0x02 (Binary: 00000010)
+unsigned char value = 7;  // value is 7 (Binary: 00000111)
+unsigned char result;
+result = value & BITMASK; // Perform bitwise AND operation
+</code>
+
+**Step-by-Step Execution**
+
+1️⃣ Convert Values to Binary
+value = 7 → Binary: 00000111
+BITMASK = 0x02 → Binary: 00000010
+
+2️⃣ Apply Bitwise AND (&)
+<code>   00000111   (7 in binary)
+&  00000010   (BITMASK: 2 in binary)
+Result:
+   00000010   (Result: 2 in binary)
+</code>
+
+3️⃣ Store the Result
+result = 2 (Decimal) → Binary: 00000010
+
+📝 What Does This Code Do?
+
+✔ Masks out all bits except bit 1 (second bit from the right).
+✔ Checks whether bit 1 of value is set.
+✔ If value has bit 1 set (1), result is 2 (0x02). Otherwise, result is 0.
+
+🔍 What Happens When value Changes?
+
+The bitwise AND (&) operation isolates bit 1 (second bit from the right) of value.
+Since BITMASK = 0x02 (Binary: 00000010), the result depends on whether bit 1 in value is 1 or 0.
+
+💡 Example Scenarios
+
+|value|	Binary (value)|value & BITMASK|	result|
+|---|---|---|---|
+|0|	00000000 |	00000000 |	0|
+|1 |	00000001 |	00000000 |	0|
+|2 |	00000010 |	00000010 |	2|
+|3 |	00000011 |	00000010|	2|
+|4 |	00000100 |	00000000|	0|
+|7 |	00000111 |	00000010|	2|
+
+> If bit 1 (second bit) is 1, result will be 2 (since 0x02 = 2).
+> If bit 1 is 0, result will be 0.
+
+**How to Make result be 1 or 0 Instead of 2 or 0?**
+
+<code>result = (value & BITMASK) >> 1;</code>
+
+This shifts bit 1 to bit 0, making result either 1 or 0.
+
+📌 Example With Shifting
+
+|value	|Binary (value)	|value & BITMASK	|Shift >> 1	|result|
+|---|---|---|---|---|
+|0	|00000000	|00000000	|00000000	|0|
+|1	|00000001	|00000000	|00000000	|0|
+|2	|00000010	|00000010	|00000001	|1|
+|3	|00000011	|00000010	|00000001	|1|
+|4	|00000100	|00000000	|00000000	|0|
+|7	|00000111	|00000010	|00000001	|1|
+
+> Now, result is 1 if bit 1 is set, otherwise 0.
+
+**Example:**
+
+<code>#define BITMASK 0x02
+unsigned char value;
+unsigned char result;
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  for (value = 0; value <= 7; value++) { // Testing values from 0 to 7
+    result = (value & BITMASK) >> 1;
+    Serial.print("Value: ");
+    Serial.print(value, BIN); // Print value in binary
+    Serial.print(" -> Result: ");
+    Serial.println(result);
+    delay(1000);
+  }
+}
+</code>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
