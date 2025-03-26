@@ -825,8 +825,10 @@ The timeout <code>(Serial.setTimeout())</code> expires.
 
 <table>
 <tr><th>Input</th><th>Output</th></tr>
-	<tr><td>red</td><td>yellow</td><td>green</td></tr>
-	<tr><td>yellow</td><td>red</td><td>green</td></tr>
+	<tr><td>red</td><td>yellow</td></tr>
+	<tr><td>yellow</td><td>red</td></tr>
+	<tr><td>green</td><td>green</td></tr>
+	
 </table>
 
 > Note: If the read data is something else than one of the options above, an error message is printed.
