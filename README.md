@@ -829,7 +829,7 @@ The timeout <code>(Serial.setTimeout())</code> expires.
 	<tr><td>yellow</td><td>red</td><td>green</td></tr>
 </table>
 
-> Notr: If the read data is something else than one of the options above, an error message is printed.
+> Note: If the read data is something else than one of the options above, an error message is printed.
 
 <code>void setup() {
     Serial.begin(9600);  // Start serial communication
