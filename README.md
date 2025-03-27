@@ -18,7 +18,7 @@ Menu:
 * [Pushbutton](#pushbutton)
 * [Question 2: LED resistor combination](#question-2-LED-resistor-combination)
 * [Question 3: Floating pin](#question-3-floating-pin)
-* [Question 4](#question-4)
+* [Question 4: INPUT_PULLUP option](#question-4-INPUT_PULLUP-option)
   - [Using Two Pushbuttons](#using-two-pushbuttons)
 * [Serial Monitor](#serial-monitor)
   - [Transmitting serial data](#transmitting-serial-data)
@@ -424,7 +424,7 @@ This means that the voltage on the pin is <ins>undefined</ins> and can fluctuate
 
 As a result, the pin will read unpredictable values—sometimes **HIGH**, sometimes **LOW**.
 
-## Question 4
+## Question 4: INPUT_PULLUP option
 
 > What is the “INPUT_PULLUP” option?
 
