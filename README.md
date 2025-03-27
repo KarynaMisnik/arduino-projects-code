@@ -13,7 +13,7 @@ Menu:
   - [Analog Input Pins](#analog-input-pins)
   - [Power and Ground Pins](#power-and-ground-pins)
   - [Reset Pin](#reset-pin)
-* [Question 1](#question-1)
+* [Question 1: LED connection](#question-1-LED-connection)
 * [Traffic Lights](#traffic-lights)
 * [Pushbutton](#pushbutton)
 * [Question 2](#question-2)
@@ -175,7 +175,7 @@ Power and Ground Pins: Essential for powering the microcontroller and providing 
 
 Reset Pin: This pin is used to reset the microcontroller. Applying a reset pulse to this pin initializes the microcontroller's program execution from the beginning.
 
-## Question 1
+## Question 1: LED connection
 
 > The LED peripherals can be connected in two ways using a “current limiting resistor” between the atmega328 PINs and the LED(s).
 > Which alternative lights up the LED when the output pin is LOW and why?
