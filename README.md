@@ -1,4 +1,4 @@
-# arduino-projects-code
+# Arduino Notes taken while studying
 
 <a href='https://docs.arduino.cc/'>Arduino Docs</a>
 
