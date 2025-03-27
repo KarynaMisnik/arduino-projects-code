@@ -33,7 +33,7 @@ Menu:
 * [Selecting a single bit from a group of 8 bits](#selecting-a-single-bit-from-a-group-of-8-bits)
 * [7 segment display](#7-segment-display)
 * [Analog signals](#analog-signals)
-* [Question 6](#question-6)
+* [Question 6: analogRead() function](#question-6-analogRead-function)
 
  ## Basic Code Editing
 
@@ -1442,7 +1442,7 @@ When the potentiometer is turned to its minimum (0V), the LED will turn off.
 The serial monitor will display values ranging from 0 to 1023 depending on the position of the potentiometer.
 
 
-## Question 6
+## Question 6: analogRead() function
 
 > In what form does the analogRead() function return the analog voltage on the Pin?
 
