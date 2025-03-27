@@ -17,7 +17,7 @@ Menu:
 * [Traffic Lights](#traffic-lights)
 * [Pushbutton](#pushbutton)
 * [Question 2: LED resistor combination](#question-2-LED-resistor-combination)
-* [Question 3](#question-3)
+* [Question 3: Floating pin](#question-3-floating-pin)
 * [Question 4](#question-4)
   - [Using Two Pushbuttons](#using-two-pushbuttons)
 * [Serial Monitor](#serial-monitor)
@@ -412,7 +412,7 @@ Falling Edge (Release): LED ON when released</td></tr>
 <li>The LED turns on depending on whether the input pin goes HIGH or LOW based on the button's state.</li>
 </ul>
 
-## Question 3
+## Question 3: Floating pin
 
 >“Properties of Pins Configured as INPUT”. What happens to the PIN voltage level if you have nothing connected to it?
 
