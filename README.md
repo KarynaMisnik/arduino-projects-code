@@ -23,7 +23,7 @@ Menu:
 * [Serial Monitor](#serial-monitor)
   - [Transmitting serial data](#transmitting-serial-data)
   - [Receiving serial data](#receiving-serial-data)
-* [Question 5](#question-5)
+* [Question 5: readStringUntil() method](#question-5-readStringUntil-method)
 * [Read an input from a user](#read-an-input-from-a-user)
 * [Traffic Lights with pedestrian, pushbutton](#traffic-ights-with-pedestrian-pushbutton)
 * [Custom Delay as a User Input in the beginning](#custom-delay-as-a-user-input-in-the-beginning)
@@ -808,7 +808,7 @@ void loop() {
 }
 </code>
 
-## Question 5
+## Question 5: readStringUntil() method
 
 >  What the readStringUntil() method does?
 
