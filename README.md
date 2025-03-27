@@ -16,7 +16,7 @@ Menu:
 * [Question 1: LED connection](#question-1-LED-connection)
 * [Traffic Lights](#traffic-lights)
 * [Pushbutton](#pushbutton)
-* [Question 2](#question-2)
+* [Question 2: LED resistor combination](#question-2-LED-resistor-combination)
 * [Question 3](#question-3)
 * [Question 4](#question-4)
   - [Using Two Pushbuttons](#using-two-pushbuttons)
@@ -295,7 +295,7 @@ digitalWrite(ledPin, val); // sets the LED to the button's value
 > With Latch: The button pin will act like it’s being held down (pressed) without needing to continuously press it.
 > When you enable the latch, the button state >will stay LOW until you manually reset it or disable the latch.
 
-## Question 2
+## Question 2: LED resistor combination
 
 > What combinations of the LED resistor configuration and the pushbutton rising/falling signal make the LED light up?
 
