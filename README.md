@@ -35,7 +35,9 @@
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
 * [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
-  - [Calculate Resistance](#calculate-resistance)
+  - [Q1: Calculate Resistance](#q1-calculate-resistance)
+  - [Simulation](#simulation)
+  - [Q2: Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
 
  ## Basic Code Editing
 
@@ -1558,7 +1560,41 @@ $R = \frac{2.72V}{0.004A}$
 
 $R = 680Ω$
 
+##### Simulation
 
+To configure analysis press **"A"**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/338362e7-e29d-4a6c-9199-6d835592f6eb" alt="Description of image" width="500">
+  <br>
+  <em>Configure Analysis</em>
+</p>
+
+#### Q2: Connect Voltage source directly to LED
+
+> What is the Current through LED D1 if it will be connected LED D1 to Voltage source +5V?
+
+If you connect +5V directly to the LED (D1) without a series resistor, the current will be excessively high and can damage the LED. Let's calculate the expected current using Ohm’s Law.
+Given Data:
+<ul>
+	<li>Supply Voltage (VsVs​) = 5V</li>
+	<li>LED Forward Voltage (VfVf​) = 2.28V</li>
+	<li>LED Internal Resistance ≈ Very Low (~0Ω, negligible)</li>
+</ul>
+
+**Ohm’s Law:**
+
+$I = \frac{V}{R}$
+
+Since an LED doesn’t have significant resistance, the only resistance limiting the current is the internal resistance of the LED and the wiring, which is very small (typically a few ohms or less). This means the current can become very high (several hundreds of milliamps), far exceeding the LED’s safe operating limit of 4mA.
+
+**What Happens?**
+
+<ul>
+	<li>The LED will likely burn out instantly.</li>
+	<li>If the power supply can deliver enough current, it may overheat or even explode.</li>
+	<li>In some cases, it may momentarily light up very brightly before failing permanently.</li>
+</ul>
 
 
 
