@@ -35,6 +35,7 @@
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
 * [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
+  - [Calculate Resistance](#calculate-resistance)
 
  ## Basic Code Editing
 
@@ -1531,8 +1532,31 @@ To get a pulse output with certain properties of Voltage source:
   <em>Advanced settings</em>
 </p>
 
+#### Q1: Calculate Resisitance
 
+Question 1: Calculate the **Ohm** value of this series resistor for the green LED (D1) using a **5V** supply. The
+LED current consumption is **4 mA**, and its threshold voltage is **2.28 V**. Use this Ohm value in the
+simulation.
 
+**Given Data:**
+
+<ul>
+	<li> Supply voltage (VsVs​) = 5V</li>
+	<li> LED forward voltage (VfVf​) = 2.28V</li>
+	<li> LED current (II) = 4 mA = 0.004 A</li>
+</ul>
+
+Ohm's Law Formula:
+
+$R = \frac{Vs - Vf}{I}$
+
+Substituting the Values:
+
+$R = \frac{5V - 2.28V}{0.004A}$
+
+$R = \frac{2.72V}{0.004A}$
+
+$R = 680Ω$
 
 
 
