@@ -1588,6 +1588,8 @@ $I = \frac{V}{R}$
 
 Since an LED doesn’t have significant resistance, the only resistance limiting the current is the internal resistance of the LED and the wiring, which is very small (typically a few ohms or less). This means the current can become very high (several hundreds of milliamps), far exceeding the LED’s safe operating limit of 4mA.
 
+![Screenshot from 2025-03-31 01-10-46](https://github.com/user-attachments/assets/6078ce3c-fafe-4d49-a152-2fbff9ec7628)
+
 **What Happens?**
 
 <ul>
