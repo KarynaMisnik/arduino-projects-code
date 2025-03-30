@@ -1482,6 +1482,13 @@ Serial.println(voltage); // Print the voltage value
 
 # Arduino UNO hardware Basics, LTSpice Simulation
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="300">
+  <br>
+  <em>Figure 1: This is the caption for the image.</em>
+</p>
+
+
 
 
 
