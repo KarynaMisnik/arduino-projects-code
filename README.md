@@ -34,6 +34,7 @@
 * [7 segment display](#7-segment-display)
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
+* [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
 
  ## Basic Code Editing
 
@@ -1479,7 +1480,7 @@ float voltage = sensorValue * (5.0 / 1023.0); // Convert to voltage (assuming 5V
 Serial.println(voltage); // Print the voltage value
 </code>
 
-
+# Arduino UNO hardware Basics, LTSpice Simulation
 
 
 
