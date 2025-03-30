@@ -1520,9 +1520,6 @@ To get a pulse output with certain properties of Voltage source:
   <br>
   <em>Figure 1: Advanced settings</em>
 </p>
-A breadboard is commonly used for testing and learning circuit connections. It is divided into rows, which are separated in two different ways. The spacing between two adjacent holes is 2.54 mm, matching the pin distance in DIL-packaged circuits.
-
-In F
 
 
 
