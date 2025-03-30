@@ -1488,7 +1488,14 @@ Serial.println(voltage); // Print the voltage value
   <em>Figure 1: Circuit scheme in TLSpice.</em>
 </p>
 
-
+To get a pulse output with certain properties of Voltage source:
+<ul><li>slect the component(<b>Voltage source</b>)</li>
+<li>Right mouse click</li>
+	<li>Choose <b>Advanced</b></li>
+	<li>in Functions field fill in the fields </li>
+	<li><b>Uncheck</b> "Make this information visable on schematic"</li>
+	<li>Press <b>"OK"</b></li>
+</ul>
 
 
 
