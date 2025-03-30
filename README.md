@@ -1483,19 +1483,27 @@ Serial.println(voltage); // Print the voltage value
 # Arduino UNO hardware Basics, LTSpice Simulation
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="300">
+  <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="500">
   <br>
-  <em>Figure 1: Circuit scheme in TLSpice.</em>
+  <em>Figure 1: Circuit scheme in TLSpice</em>
 </p>
 
 To get a pulse output with certain properties of Voltage source:
 <ul><li>slect the component(<b>Voltage source</b>)</li>
-<li>Right mouse click</li>
-	<li>Choose <b>Advanced</b></li>
+<li>right mouse click</li>
+	<li>choose <b>Advanced</b></li>
 	<li>in Functions field fill in the fields </li>
-	<li><b>Uncheck</b> "Make this information visable on schematic"</li>
-	<li>Press <b>"OK"</b></li>
+	<li><b>uncheck</b> "Make this information visable on schematic"</li>
+	<li>press <b>"OK"</b></li>
 </ul>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="500">
+  <br>
+  <em>Figure 1: Advanced settings</em>
+</p>
+
+
 
 
 
