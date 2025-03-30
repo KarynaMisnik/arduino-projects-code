@@ -1482,6 +1482,24 @@ Serial.println(voltage); // Print the voltage value
 
 # Arduino UNO hardware Basics, LTSpice Simulation
 
+A breadboard is commonly used for testing and learning circuit connections. It is divided into rows, which are separated in two different ways. The spacing between two adjacent holes is 2.54 mm, matching the pin distance in DIL-packaged circuits.
+
+In Figure 1, a typical breadboard is shown:
+
+    The red line represents the positive voltage rail, where the holes are connected horizontally (shorted). This means the positive supply voltage should be distributed along this line.
+
+    The blue line is separate from the red one and also connected horizontally, typically used for the ground (GND) potential.
+
+Regarding the main terminal rows:
+
+    The holes labeled A to J are separated horizontally.
+
+    However, within each column, the holes are vertically connected.
+
+    There is a gap between columns E and F, meaning connections do not extend across this break.
+
+This structure allows for easy prototyping without soldering.
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="500">
   <br>
