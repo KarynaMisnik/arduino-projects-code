@@ -1482,28 +1482,38 @@ Serial.println(voltage); // Print the voltage value
 
 # Arduino UNO hardware Basics, LTSpice Simulation
 
-A breadboard is commonly used for testing and learning circuit connections. It is divided into rows, which are separated in two different ways. The spacing between two adjacent holes is 2.54 mm, matching the pin distance in DIL-packaged circuits.
+A breadboard is commonly used for testing and learning circuit connections. It is divided into rows, which are separated in two different ways. The spacing between two adjacent holes is **2.54 mm**, matching the pin distance in **DIL-packaged (Dual In-Line)**  circuits.
 
-In Figure 1, a typical breadboard is shown:
+A typical breadboard is shown:
 
-    The red line represents the positive voltage rail, where the holes are connected horizontally (shorted). This means the positive supply voltage should be distributed along this line.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c76b0aac-8bdc-4819-a712-3c40fec01051" alt="Description of image" width="800">
+  <br>
+  <em>Breadboard</em>
+</p>
 
-    The blue line is separate from the red one and also connected horizontally, typically used for the ground (GND) potential.
+The **red line** represents the **positive** voltage rail, where the holes are connected horizontally (shorted). This means the positive supply voltage should be distributed along this line.
+
+The blue line is separate from the red one and also connected horizontally, typically used for the **ground (GND)** potential.
 
 Regarding the main terminal rows:
 
-    The holes labeled A to J are separated horizontally.
-
-    However, within each column, the holes are vertically connected.
-
-    There is a gap between columns E and F, meaning connections do not extend across this break.
+The holes labeled A to J are separated horizontally. However, within each column, the holes are vertically connected. There is a gap between columns E and F, meaning connections do not extend across this break.
 
 This structure allows for easy prototyping without soldering.
 
 <p align="center">
+  <img src="https://github.com/user-attachments/assets/77ebf297-d594-4e02-bd8a-e2cb00d043a4" alt="Description of image" width="800">
+  <br>
+  <em>Breadboard</em>
+</p>
+
+A **DIL (Dual In-Line)** package is shown from a top view. Typically, the pins are numbered with pin 1 located at the bottom-left corner. The numbering continues from left to right on the bottom row and then from right to left on the top row. 
+
+<p align="center">
   <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="500">
   <br>
-  <em>Figure 1: Circuit scheme in TLSpice</em>
+  <em>Circuit scheme in TLSpice</em>
 </p>
 
 To get a pulse output with certain properties of Voltage source:
@@ -1518,7 +1528,7 @@ To get a pulse output with certain properties of Voltage source:
 <p align="center">
   <img src="https://github.com/user-attachments/assets/23fb2376-2512-41e4-89ac-6dc0d553ee19" alt="Description of image" width="500">
   <br>
-  <em>Figure 1: Advanced settings</em>
+  <em>Advanced settings</em>
 </p>
 
 
