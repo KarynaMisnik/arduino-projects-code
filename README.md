@@ -1498,7 +1498,7 @@ To get a pulse output with certain properties of Voltage source:
 </ul>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="500">
+  <img src="https://github.com/user-attachments/assets/23fb2376-2512-41e4-89ac-6dc0d553ee19" alt="Description of image" width="500">
   <br>
   <em>Figure 1: Advanced settings</em>
 </p>
