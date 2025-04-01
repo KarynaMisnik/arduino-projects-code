@@ -1565,7 +1565,7 @@ $R = 680Ω$
 To configure analysis press **"A"**
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/338362e7-e29d-4a6c-9199-6d835592f6eb" alt="Description of image" width="500">
+  <img src="https://github.com/user-attachments/assets/18f44925-ad0e-4537-82b8-183e4463d88d" alt="Description of image" width="500">
   <br>
   <em>Configure Analysis</em>
 </p>
