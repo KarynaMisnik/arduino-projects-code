@@ -1514,7 +1514,7 @@ This structure allows for easy prototyping without soldering.
 A **DIL (Dual In-Line)** package is shown from a top view. Typically, the pins are numbered with pin 1 located at the bottom-left corner. The numbering continues from left to right on the bottom row and then from right to left on the top row. 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/faf12858-c2d9-45d7-9a9d-d304f5d70d98" alt="Description of image" width="500">
+  <img src="https://github.com/user-attachments/assets/9c0b85fd-f202-43fb-88fe-49d72ebe3f14" alt="Description of image" width="500">
   <br>
   <em>Circuit scheme in TLSpice</em>
 </p>
