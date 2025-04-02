@@ -1506,9 +1506,9 @@ The holes labeled A to J are separated horizontally. However, within each column
 This structure allows for easy prototyping without soldering.
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/77ebf297-d594-4e02-bd8a-e2cb00d043a4" alt="Description of image" width="800">
+  <img src="https://github.com/user-attachments/assets/77ebf297-d594-4e02-bd8a-e2cb00d043a4" alt="Description of image" width="500">
   <br>
-  <em>Breadboard</em>
+  <em>DIL</em>
 </p>
 
 A **DIL (Dual In-Line)** package is shown from a top view. Typically, the pins are numbered with pin 1 located at the bottom-left corner. The numbering continues from left to right on the bottom row and then from right to left on the top row. 
