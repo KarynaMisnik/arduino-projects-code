@@ -35,7 +35,7 @@
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
 * [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
-  - [Q1:Calculate Resistance](#q1-calculate-resistance)
+  - [Q1:Calculate Resisitance](#q1-calculate-resisitance)
   - [Simulation](#simulation)
   - [Q2:Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
 
