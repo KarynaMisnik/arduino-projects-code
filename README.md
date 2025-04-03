@@ -34,10 +34,12 @@
 * [7 segment display](#7-segment-display)
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
+* [Arduino Environment](#arduino-environment)
 * [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
   - [Q1:Calculate Resisitance](#q1-calculate-resisitance)
   - [Simulation](#simulation)
   - [Q2:Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
+  
 
  ## Basic Code Editing
 
@@ -1482,6 +1484,8 @@ If analogRead() returns 512, that corresponds to approximately half of the refer
 float voltage = sensorValue * (5.0 / 1023.0); // Convert to voltage (assuming 5V reference)
 Serial.println(voltage); // Print the voltage value
 </code>
+
+# Arduino Environment
 
 # Arduino UNO hardware Basics, LTSpice Simulation
 
