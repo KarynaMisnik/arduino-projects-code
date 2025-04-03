@@ -39,6 +39,7 @@
   - [Q1:Calculate Resisitance](#q1-calculate-resisitance)
   - [Simulation](#simulation)
   - [Q2:Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
+* [Temperature Measurements](#temperature-measurements)
   
 
  ## Basic Code Editing
@@ -1602,7 +1603,7 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 	<li>In some cases, it may momentarily light up very brightly before failing permanently.</li>
 </ul>
 
-
+# Temperature Measurements
 
 
 
