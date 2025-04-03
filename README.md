@@ -40,6 +40,7 @@
   - [Simulation](#simulation)
   - [Q2:Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
 * [Temperature Measurements](#temperature-measurements)
+* [Analog temperature sensor and voltage measurement](#analog-temperature-sensor-and-voltage-measurement.)
   
 
  ## Basic Code Editing
@@ -1605,7 +1606,7 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 
 # Temperature Measurements
 
-
+# Analog temperature sensor and voltage measurement.
 
 
 
