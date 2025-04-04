@@ -1609,7 +1609,7 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 # Analog temperature sensor and voltage measurement.
 
 
-
+> What must the resistance of R4 be, if with 50V input voltage the voltage over R4 is 5V? The connection  shall contain R1=R2=R3=3 kΩ.
 
 
 
