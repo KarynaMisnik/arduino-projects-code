@@ -1,4 +1,4 @@
-# ✍️ Arduino Notes taken while studying
+# ✍️ Arduino Notes 
 
 <a href='https://docs.arduino.cc/'>Arduino Docs</a>
 
