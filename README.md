@@ -40,6 +40,7 @@
   - [Simulation](#simulation)
   - [Q2:Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
 * [Pins, Switches and Pull-Up Resistors](#pins-switches-and-pull-up-resistors)
+  - [Adding a Serial Monitor](#adding-a-serial-monitor)
 * [Temperature Measurements](#temperature-measurements)
 * [Analog temperature sensor and voltage measurement](#analog-temperature-sensor-and-voltage-measurement.)
   
@@ -1747,6 +1748,153 @@ void loop() {
 Pin 13 (Built-in LED): Turns on when any switch (A, B, C, or D) is pressed.
 Pin 3 (LED Y1): Lights up when either A and B are both pressed, or C and D are both pressed.
 Pin 4 (LED Y2): Lights up when either A or B is pressed and either C or D is pressed.
+
+#### Adding a Serial Monitor
+
+> Add functionality to the previous system that prints the states of the switches (whether the switch is in the ON or OFF position) to the Arduino IDE interface.
+> The switch > labels can be S1, S2, S3, and S4.
+> Print the states of all switches only if the state of any switch has changed from the previous state.
+
+>[!NOTE]
+>To extend the system with Serial Monitor functionality:
+<ul>
+<li>Track the previous state of each switch.</li>
+<li>Print the state of the switches (whether they are ON or OFF) only when the state has changed from the previous state.</li>
+<li>Use S1, S2, S3, S4 as labels for the switches.</li>
+</ul>
+
+```html-nolint
+// Define the pins connected to the switches
+const int switchPin1 = 5;  // Pin 5 for Switch A (S1)
+const int switchPin2 = 6;  // Pin 6 for Switch B (S2)
+const int switchPin3 = 7;  // Pin 7 for Switch C (S3)
+const int switchPin4 = 8;  // Pin 8 for Switch D (S4)
+
+// Define the pins for the LEDs
+const int ledPin1 = 13;     // Pin 13 for the built-in LED (already used for ON/OFF)
+const int ledPin2 = 3;      // Pin 3 for LED Y1 (AB + CD)
+const int ledPin3 = 4;      // Pin 4 for LED Y2 ((A + B)(C + D))
+
+// Variables to store the current and previous states of the switches
+int currentStateS1 = HIGH;
+int currentStateS2 = HIGH;
+int currentStateS3 = HIGH;
+int currentStateS4 = HIGH;
+
+int previousStateS1 = HIGH;
+int previousStateS2 = HIGH;
+int previousStateS3 = HIGH;
+int previousStateS4 = HIGH;
+
+void setup() {
+  // Start serial communication for the monitor
+  Serial.begin(9600);
+
+  // Set the built-in LED pin as an output
+  pinMode(ledPin1, OUTPUT);
+  
+  // Set the other LED pins as outputs
+  pinMode(ledPin2, OUTPUT);  // LED Y1
+  pinMode(ledPin3, OUTPUT);  // LED Y2
+
+  // Set the switch pins as input with internal pull-up resistors enabled
+  pinMode(switchPin1, INPUT_PULLUP);  // Switch A (S1)
+  pinMode(switchPin2, INPUT_PULLUP);  // Switch B (S2)
+  pinMode(switchPin3, INPUT_PULLUP);  // Switch C (S3)
+  pinMode(switchPin4, INPUT_PULLUP);  // Switch D (S4)
+}
+
+void loop() {
+  // Read the current state of each switch (LOW if pressed, HIGH if open)
+  currentStateS1 = digitalRead(switchPin1);
+  currentStateS2 = digitalRead(switchPin2);
+  currentStateS3 = digitalRead(switchPin3);
+  currentStateS4 = digitalRead(switchPin4);
+
+  // Check if the state of any switch has changed
+  if (currentStateS1 != previousStateS1 || 
+      currentStateS2 != previousStateS2 || 
+      currentStateS3 != previousStateS3 || 
+      currentStateS4 != previousStateS4) {
+
+    // Print the state of the switches if there is a change
+    Serial.print("S1: ");
+    Serial.println(currentStateS1 == LOW ? "ON" : "OFF");
+
+    Serial.print("S2: ");
+    Serial.println(currentStateS2 == LOW ? "ON" : "OFF");
+
+    Serial.print("S3: ");
+    Serial.println(currentStateS3 == LOW ? "ON" : "OFF");
+
+    Serial.print("S4: ");
+    Serial.println(currentStateS4 == LOW ? "ON" : "OFF");
+
+    // Update previous states
+    previousStateS1 = currentStateS1;
+    previousStateS2 = currentStateS2;
+    previousStateS3 = currentStateS3;
+    previousStateS4 = currentStateS4;
+  }
+
+  // Control the built-in LED based on the state of the switches
+  if (currentStateS1 == LOW || currentStateS2 == LOW || currentStateS3 == LOW || currentStateS4 == LOW) {
+    digitalWrite(ledPin1, HIGH);  // Turn the built-in LED on
+  } else {
+    digitalWrite(ledPin1, LOW);   // Turn the built-in LED off
+  }
+
+  // Calculate the Boolean expression for LED 2 (Y1 = AB + CD)
+  bool Y1 = (currentStateS1 == LOW && currentStateS2 == LOW) || (currentStateS3 == LOW && currentStateS4 == LOW);
+  
+  // Turn on LED 2 (pin 3) based on the result of Y1
+  if (Y1) {
+    digitalWrite(ledPin2, HIGH);  // Turn on LED Y1
+  } else {
+    digitalWrite(ledPin2, LOW);   // Turn off LED Y1
+  }
+
+  // Calculate the Boolean expression for LED 3 (Y2 = (A + B)(C + D))
+  bool Y2 = (currentStateS1 == LOW || currentStateS2 == LOW) && (currentStateS3 == LOW || currentStateS4 == LOW);
+  
+  // Turn on LED 3 (pin 4) based on the result of Y2
+  if (Y2) {
+    digitalWrite(ledPin3, HIGH);  // Turn on LED Y2
+  } else {
+    digitalWrite(ledPin3, LOW);   // Turn off LED Y2
+  }
+
+  // Small delay to debounce switches (if necessary)
+  delay(50);  // Adjust delay as needed (in milliseconds)
+}
+
+```
+
+Explanation of New Functionality:
+
+    State Tracking Variables:
+
+        We introduced four variables to store the current and previous states of each switch:
+
+            currentStateS1, currentStateS2, currentStateS3, currentStateS4 for the current state of switches S1, S2, S3, and S4.
+
+            previousStateS1, previousStateS2, previousStateS3, previousStateS4 for the previous state of each switch.
+
+    State Change Detection:
+
+        In the loop(), we compare the current state of each switch to its previous state:
+
+            If any switch's state has changed (from LOW to HIGH or from HIGH to LOW), we print the new state of all switches.
+
+    Serial Monitor Printing:
+
+        If a state change is detected, we print the state of all switches to the Serial Monitor.
+
+        The state is printed as either "ON" if the switch is pressed (LOW), or "OFF" if the switch is open (HIGH).
+
+    Update Previous States:
+
+        After printing the state change, we update the previousState variables to store the current states for comparison in the next loop iteration.
 
 # Temperature Measurements
 
