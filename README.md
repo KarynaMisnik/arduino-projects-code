@@ -1870,31 +1870,30 @@ void loop() {
 
 ```
 
-Explanation of New Functionality:
+**Explanation of New Functionality:**
 
-    State Tracking Variables:
+<ins>State Tracking Variables:</ins>
+Four variables to store the current and previous states of each switch:
 
-        We introduced four variables to store the current and previous states of each switch:
+currentStateS1, currentStateS2, currentStateS3, currentStateS4 for the current state of switches S1, S2, S3, and S4.
 
-            currentStateS1, currentStateS2, currentStateS3, currentStateS4 for the current state of switches S1, S2, S3, and S4.
+previousStateS1, previousStateS2, previousStateS3, previousStateS4 for the previous state of each switch.
 
-            previousStateS1, previousStateS2, previousStateS3, previousStateS4 for the previous state of each switch.
+<ins>State Change Detection:</ins>
 
-    State Change Detection:
+In the loop(), compare the current state of each switch to its previous state:
 
-        In the loop(), we compare the current state of each switch to its previous state:
+If any switch's state has changed (from LOW to HIGH or from HIGH to LOW), we print the new state of all switches.
 
-            If any switch's state has changed (from LOW to HIGH or from HIGH to LOW), we print the new state of all switches.
+<ins>Serial Monitor Printing:</ins>
 
-    Serial Monitor Printing:
+If a state change is detected, we print the state of all switches to the Serial Monitor.
 
-        If a state change is detected, we print the state of all switches to the Serial Monitor.
+The state is printed as either "ON" if the switch is pressed (LOW), or "OFF" if the switch is open (HIGH).
 
-        The state is printed as either "ON" if the switch is pressed (LOW), or "OFF" if the switch is open (HIGH).
+<ins>Update Previous States:</ins>
 
-    Update Previous States:
-
-        After printing the state change, we update the previousState variables to store the current states for comparison in the next loop iteration.
+After printing the state change, update the previousState variables to store the current states for comparison in the next loop iteration.
 
 # Temperature Measurements
 
