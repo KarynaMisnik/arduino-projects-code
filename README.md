@@ -1609,39 +1609,51 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 
 > With external 10 kΩ pull-up resistors connected to pins 5, 6, 7, and 8, the pins will read HIGH when the switches are open (because of the pull-ups) and will read LOW when the switches are closed.
 
-<code>// Define the pins connected to the switches
+```html-nolint
+// Define the pins connected to the switches
 const int switchPin1 = 5;  // Pin 5 for Switch 1
 const int switchPin2 = 6;  // Pin 6 for Switch 2
 const int switchPin3 = 7;  // Pin 7 for Switch 3
 const int switchPin4 = 8;  // Pin 8 for Switch 4
+
+// Define the pin for the built-in LED
+const int ledPin = 13;     // Pin 13 for the built-in LED
+
 void setup() {
-  // Initialize serial communication at 9600 baud rate
-  Serial.begin(9600);
+  // Set the built-in LED pin as an output
+  pinMode(ledPin, OUTPUT);
+
   // Set the switch pins as input with internal pull-up resistors enabled
   pinMode(switchPin1, INPUT_PULLUP);
   pinMode(switchPin2, INPUT_PULLUP);
   pinMode(switchPin3, INPUT_PULLUP);
   pinMode(switchPin4, INPUT_PULLUP);
 }
+
 void loop() {
   // Read the state of each switch (LOW if pressed, HIGH if open)
   int switchState1 = digitalRead(switchPin1);
   int switchState2 = digitalRead(switchPin2);
   int switchState3 = digitalRead(switchPin3);
   int switchState4 = digitalRead(switchPin4);
-  // Print the state of each switch to the serial monitor
-  Serial.print("Switch 1: ");
-  Serial.println(switchState1 == LOW ? "ON" : "OFF");
-  Serial.print("Switch 2: ");
-  Serial.println(switchState2 == LOW ? "ON" : "OFF");
-  Serial.print("Switch 3: ");
-  Serial.println(switchState3 == LOW ? "ON" : "OFF");
-  Serial.print("Switch 4: ");
-  Serial.println(switchState4 == LOW ? "ON" : "OFF");
-  // Wait a short time before the next loop iteration
-  delay(500);  // Adjust delay as needed (in milliseconds)
+
+  // Control the built-in LED based on the state of the switches
+  // If a switch is ON (LOW), turn the LED on
+  if (switchState1 == LOW || switchState2 == LOW || switchState3 == LOW || switchState4 == LOW) {
+    digitalWrite(ledPin, HIGH);  // Turn the LED on
+  } else {
+    digitalWrite(ledPin, LOW);   // Turn the LED off
+  }
+
+  // Small delay to debounce switches (if necessary)
+  delay(50);  // Adjust delay as needed (in milliseconds)
 }
-</code>
+
+```
+
+
+[!NOTE] 
+To est this - write the data from a input pin (which is connected to a switch) to the built-in LED on pin 13. This LED should shine when the switch to be tested is ON
 
 # Temperature Measurements
 
