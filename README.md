@@ -39,6 +39,7 @@
   - [Q1:Calculate Resisitance](#q1-calculate-resisitance)
   - [Simulation](#simulation)
   - [Q2:Connect Voltage source directly to LED](#q2-connect-voltage-source-directly-to-led)
+* [Pins, Switches and Pull-Up Resistors](#pins-switches-and-pull-up-resistors)
 * [Temperature Measurements](#temperature-measurements)
 * [Analog temperature sensor and voltage measurement](#analog-temperature-sensor-and-voltage-measurement.)
   
@@ -1603,6 +1604,10 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 	<li>If the power supply can deliver enough current, it may overheat or even explode.</li>
 	<li>In some cases, it may momentarily light up very brightly before failing permanently.</li>
 </ul>
+
+# Pins, Switches and Pull-Up Resistors
+
+
 
 # Temperature Measurements
 
