@@ -1895,6 +1895,169 @@ The state is printed as either "ON" if the switch is pressed (LOW), or "OFF" if 
 
 After printing the state change, update the previousState variables to store the current states for comparison in the next loop iteration.
 
+>Add functionality to the previous setup where, upon entering the number 1 in the serial terminal,
+> the LED built into the development board switches to the ON state, and by entering the number 2, the LED switches to the OFF state.
+
+**Logic:**
+
+Check the Serial Monitor for incoming data (specifically, the numbers 1 and 2).
+
+If the number 1 is received, the built-in LED (connected to pin 13) will be turned ON.
+
+If the number 2 is received, the built-in LED (connected to pin 13) will be turned OFF.
+
+```html-nolint
+// Define the pins connected to the switches
+const int switchPin1 = 5;  // Pin 5 for Switch A (S1)
+const int switchPin2 = 6;  // Pin 6 for Switch B (S2)
+const int switchPin3 = 7;  // Pin 7 for Switch C (S3)
+const int switchPin4 = 8;  // Pin 8 for Switch D (S4)
+
+// Define the pins for the LEDs
+const int ledPin1 = 13;     // Pin 13 for the built-in LED (already used for ON/OFF)
+const int ledPin2 = 3;      // Pin 3 for LED Y1 (AB + CD)
+const int ledPin3 = 4;      // Pin 4 for LED Y2 ((A + B)(C + D))
+
+// Variables to store the current and previous states of the switches
+int currentStateS1 = HIGH;
+int currentStateS2 = HIGH;
+int currentStateS3 = HIGH;
+int currentStateS4 = HIGH;
+
+int previousStateS1 = HIGH;
+int previousStateS2 = HIGH;
+int previousStateS3 = HIGH;
+int previousStateS4 = HIGH;
+
+// Variable to store serial input
+char serialInput;
+
+void setup() {
+  // Start serial communication for the monitor
+  Serial.begin(9600);
+
+  // Set the built-in LED pin as an output
+  pinMode(ledPin1, OUTPUT);
+  
+  // Set the other LED pins as outputs
+  pinMode(ledPin2, OUTPUT);  // LED Y1
+  pinMode(ledPin3, OUTPUT);  // LED Y2
+
+  // Set the switch pins as input with internal pull-up resistors enabled
+  pinMode(switchPin1, INPUT_PULLUP);  // Switch A (S1)
+  pinMode(switchPin2, INPUT_PULLUP);  // Switch B (S2)
+  pinMode(switchPin3, INPUT_PULLUP);  // Switch C (S3)
+  pinMode(switchPin4, INPUT_PULLUP);  // Switch D (S4)
+}
+
+void loop() {
+  // Read the current state of each switch (LOW if pressed, HIGH if open)
+  currentStateS1 = digitalRead(switchPin1);
+  currentStateS2 = digitalRead(switchPin2);
+  currentStateS3 = digitalRead(switchPin3);
+  currentStateS4 = digitalRead(switchPin4);
+
+  // Check if the state of any switch has changed
+  if (currentStateS1 != previousStateS1 || 
+      currentStateS2 != previousStateS2 || 
+      currentStateS3 != previousStateS3 || 
+      currentStateS4 != previousStateS4) {
+
+    // Print the state of the switches if there is a change
+    Serial.print("S1: ");
+    Serial.println(currentStateS1 == LOW ? "ON" : "OFF");
+
+    Serial.print("S2: ");
+    Serial.println(currentStateS2 == LOW ? "ON" : "OFF");
+
+    Serial.print("S3: ");
+    Serial.println(currentStateS3 == LOW ? "ON" : "OFF");
+
+    Serial.print("S4: ");
+    Serial.println(currentStateS4 == LOW ? "ON" : "OFF");
+
+    // Update previous states
+    previousStateS1 = currentStateS1;
+    previousStateS2 = currentStateS2;
+    previousStateS3 = currentStateS3;
+    previousStateS4 = currentStateS4;
+  }
+
+  // Control the built-in LED based on the state of the switches
+  if (currentStateS1 == LOW || currentStateS2 == LOW || currentStateS3 == LOW || currentStateS4 == LOW) {
+    digitalWrite(ledPin1, HIGH);  // Turn the built-in LED on
+  } else {
+    digitalWrite(ledPin1, LOW);   // Turn the built-in LED off
+  }
+
+  // Calculate the Boolean expression for LED 2 (Y1 = AB + CD)
+  bool Y1 = (currentStateS1 == LOW && currentStateS2 == LOW) || (currentStateS3 == LOW && currentStateS4 == LOW);
+  
+  // Turn on LED 2 (pin 3) based on the result of Y1
+  if (Y1) {
+    digitalWrite(ledPin2, HIGH);  // Turn on LED Y1
+  } else {
+    digitalWrite(ledPin2, LOW);   // Turn off LED Y1
+  }
+
+  // Calculate the Boolean expression for LED 3 (Y2 = (A + B)(C + D))
+  bool Y2 = (currentStateS1 == LOW || currentStateS2 == LOW) && (currentStateS3 == LOW || currentStateS4 == LOW);
+  
+  // Turn on LED 3 (pin 4) based on the result of Y2
+  if (Y2) {
+    digitalWrite(ledPin3, HIGH);  // Turn on LED Y2
+  } else {
+    digitalWrite(ledPin3, LOW);   // Turn off LED Y2
+  }
+
+  // Read the serial input from the Serial Monitor
+  if (Serial.available() > 0) {
+    serialInput = Serial.read();  // Read the incoming byte
+
+    // Check if the input is '1' or '2'
+    if (serialInput == '1') {
+      digitalWrite(ledPin1, HIGH);  // Turn on the built-in LED
+      Serial.println("LED ON");
+    } 
+    else if (serialInput == '2') {
+      digitalWrite(ledPin1, LOW);   // Turn off the built-in LED
+      Serial.println("LED OFF");
+    }
+  }
+
+  // Small delay to debounce switches (if necessary)
+  delay(50);  // Adjust delay as needed (in milliseconds)
+}
+
+```
+
+**Functionality:**
+
+ <ins>Serial Input for Controlling Built-in LED:</ins>
+
+The program reads input from the Serial Monitor using Serial.read().
+
+If the number 1 is entered, the built-in LED (on pin 13) will turn ON.
+
+If the number 2 is entered, the built-in LED will turn OFF.
+
+<ins>Feedback to the Serial Monitor:</ins>
+
+When the LED is turned ON, a message "LED ON" is printed to the Serial Monitor.
+
+When the LED is turned OFF, a message "LED OFF" is printed to the Serial Monitor.
+
+<ins>Using Serial.available() and Serial.read():</ins>
+
+The Serial.available() function checks if data is available in the serial buffer.
+
+If data is available, we use Serial.read() to get the data. We then check if the received data is either '1' or '2' and control the LED accordingly.
+
+<ins>Using Serial.println() to Provide Feedback:</ins>
+
+After turning the LED on or off, we provide feedback to the Serial Monitor with "LED ON" or "LED OFF".
+
+
 # Temperature Measurements
 
 # Analog temperature sensor and voltage measurement.
