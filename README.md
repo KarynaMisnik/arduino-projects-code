@@ -1664,8 +1664,89 @@ void loop() {
 **Y2 = (A + B)(C + D):** This means the LED at pin 4 should turn ON if either A or B is pressed and either C or D is pressed.
 
 ```html-nolint
+// Define the pins connected to the switches
+const int switchPin1 = 5;  // Pin 5 for Switch A
+const int switchPin2 = 6;  // Pin 6 for Switch B
+const int switchPin3 = 7;  // Pin 7 for Switch C
+const int switchPin4 = 8;  // Pin 8 for Switch D
+
+// Define the pins for the LEDs
+const int ledPin1 = 13;     // Pin 13 for the built-in LED (already used for ON/OFF)
+const int ledPin2 = 3;      // Pin 3 for LED Y1 (AB + CD)
+const int ledPin3 = 4;      // Pin 4 for LED Y2 ((A + B)(C + D))
+
+void setup() {
+  // Set the built-in LED pin as an output
+  pinMode(ledPin1, OUTPUT);
+  
+  // Set the other LED pins as outputs
+  pinMode(ledPin2, OUTPUT);  // LED Y1
+  pinMode(ledPin3, OUTPUT);  // LED Y2
+
+  // Set the switch pins as input with internal pull-up resistors enabled
+  pinMode(switchPin1, INPUT_PULLUP);  // Switch A
+  pinMode(switchPin2, INPUT_PULLUP);  // Switch B
+  pinMode(switchPin3, INPUT_PULLUP);  // Switch C
+  pinMode(switchPin4, INPUT_PULLUP);  // Switch D
+}
+
+void loop() {
+  // Read the state of each switch (LOW if pressed, HIGH if open)
+  int switchStateA = digitalRead(switchPin1);
+  int switchStateB = digitalRead(switchPin2);
+  int switchStateC = digitalRead(switchPin3);
+  int switchStateD = digitalRead(switchPin4);
+
+  // Control the built-in LED based on the state of the switches
+  if (switchStateA == LOW || switchStateB == LOW || switchStateC == LOW || switchStateD == LOW) {
+    digitalWrite(ledPin1, HIGH);  // Turn the built-in LED on
+  } else {
+    digitalWrite(ledPin1, LOW);   // Turn the built-in LED off
+  }
+
+  // Calculate the Boolean expression for LED 2 (Y1 = AB + CD)
+  bool Y1 = (switchStateA == LOW && switchStateB == LOW) || (switchStateC == LOW && switchStateD == LOW);
+  
+  // Turn on LED 2 (pin 3) based on the result of Y1
+  if (Y1) {
+    digitalWrite(ledPin2, HIGH);  // Turn on LED Y1
+  } else {
+    digitalWrite(ledPin2, LOW);   // Turn off LED Y1
+  }
+
+  // Calculate the Boolean expression for LED 3 (Y2 = (A + B)(C + D))
+  bool Y2 = (switchStateA == LOW || switchStateB == LOW) && (switchStateC == LOW || switchStateD == LOW);
+  
+  // Turn on LED 3 (pin 4) based on the result of Y2
+  if (Y2) {
+    digitalWrite(ledPin3, HIGH);  // Turn on LED Y2
+  } else {
+    digitalWrite(ledPin3, LOW);   // Turn off LED Y2
+  }
+
+  // Small delay to debounce switches (if necessary)
+  delay(50);  // Adjust delay as needed (in milliseconds)
+}
 
 ```
+
+>[!NOTE]
+>**LED Control:**
+>LED on Pin 13: The built-in LED lights up when any switch is pressed (any pin reads LOW).
+>LED on Pin 3 (Y1 = AB + CD): The LED lights up if A and B are both pressed (LOW) or if C and D are both pressed (LOW).
+>LED on Pin 4 (Y2 = (A + B)(C + D)): The LED lights up if either A or B is pressed (LOW) and either C or D is pressed (LOW).
+
+**Boolean Expressions Logic:**
+
+**Y1 = AB + CD:** LED 2 (pin 3) will turn on if A and B are both pressed or C and D are both pressed.
+
+**Y2 = (A + B)(C + D):** LED 3 (pin 4) will turn on if either A or B is pressed and either C or D is pressed.
+
+**Result:**
+
+Pin 13 (Built-in LED): Turns on when any switch (A, B, C, or D) is pressed.
+Pin 3 (LED Y1): Lights up when either A and B are both pressed, or C and D are both pressed.
+Pin 4 (LED Y2): Lights up when either A or B is pressed and either C or D is pressed.
 
 # Temperature Measurements
 
