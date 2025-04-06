@@ -1659,6 +1659,10 @@ void loop() {
 > Y1=AB+CD and control one LED at pin 4 using the Boolean expression Y2=(A+B)(C+D).
 > A,B,C,D are the switches on the switchbox.
 
+**Y1 = AB + CD:** This means that the LED at pin 3 should turn ON if <ins>both</ins> switches A and B are pressed (i.e., A = LOW and B = LOW), or if both C and D are pressed.
+
+**Y2 = (A + B)(C + D):** This means the LED at pin 4 should turn ON if either A or B is pressed and either C or D is pressed.
+
 ```html-nolint
 
 ```
