@@ -1626,7 +1626,8 @@ void setup() {
   // Set the built-in LED pin as an output
   pinMode(ledPin, OUTPUT);
 
-  // Set the switch pins as input with internal pull-up resistors enabled
+// Set the switch pins as input with internal pull-up resistors enabled
+//The switch pins are configured as inputs with internal pull-up resistors using INPUT_PULLUP.
   pinMode(switchPin1, INPUT_PULLUP);
   pinMode(switchPin2, INPUT_PULLUP);
   pinMode(switchPin3, INPUT_PULLUP);
