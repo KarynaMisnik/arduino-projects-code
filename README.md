@@ -1609,6 +1609,9 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 
 > With external 10 kΩ pull-up resistors connected to pins 5, 6, 7, and 8, the pins will read HIGH when the switches are open (because of the pull-ups) and will read LOW when the switches are closed.
 
+> [!NOTE]
+> To test this - write the data from a input pin (which is connected to a switch) to the built-in LED on pin 13. This LED should shine when the switch to be tested is ON
+
 ```html-nolint
 // Define the pins connected to the switches
 const int switchPin1 = 5;  // Pin 5 for Switch 1
@@ -1650,10 +1653,6 @@ void loop() {
 }
 
 ```
-
-
-[!NOTE] 
-To est this - write the data from a input pin (which is connected to a switch) to the built-in LED on pin 13. This LED should shine when the switch to be tested is ON
 
 # Temperature Measurements
 
