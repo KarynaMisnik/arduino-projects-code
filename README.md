@@ -1607,7 +1607,41 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 
 # Pins, Switches and Pull-Up Resistors
 
+> With external 10 kΩ pull-up resistors connected to pins 5, 6, 7, and 8, the pins will read HIGH when the switches are open (because of the pull-ups) and will read LOW when the switches are closed.
 
+<code>// Define the pins connected to the switches
+const int switchPin1 = 5;  // Pin 5 for Switch 1
+const int switchPin2 = 6;  // Pin 6 for Switch 2
+const int switchPin3 = 7;  // Pin 7 for Switch 3
+const int switchPin4 = 8;  // Pin 8 for Switch 4
+void setup() {
+  // Initialize serial communication at 9600 baud rate
+  Serial.begin(9600);
+  // Set the switch pins as input with internal pull-up resistors enabled
+  pinMode(switchPin1, INPUT_PULLUP);
+  pinMode(switchPin2, INPUT_PULLUP);
+  pinMode(switchPin3, INPUT_PULLUP);
+  pinMode(switchPin4, INPUT_PULLUP);
+}
+void loop() {
+  // Read the state of each switch (LOW if pressed, HIGH if open)
+  int switchState1 = digitalRead(switchPin1);
+  int switchState2 = digitalRead(switchPin2);
+  int switchState3 = digitalRead(switchPin3);
+  int switchState4 = digitalRead(switchPin4);
+  // Print the state of each switch to the serial monitor
+  Serial.print("Switch 1: ");
+  Serial.println(switchState1 == LOW ? "ON" : "OFF");
+  Serial.print("Switch 2: ");
+  Serial.println(switchState2 == LOW ? "ON" : "OFF");
+  Serial.print("Switch 3: ");
+  Serial.println(switchState3 == LOW ? "ON" : "OFF");
+  Serial.print("Switch 4: ");
+  Serial.println(switchState4 == LOW ? "ON" : "OFF");
+  // Wait a short time before the next loop iteration
+  delay(500);  // Adjust delay as needed (in milliseconds)
+}
+</code>
 
 # Temperature Measurements
 
