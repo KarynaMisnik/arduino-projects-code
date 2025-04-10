@@ -554,18 +554,23 @@ void loop() {
 
 **LED lights up when one or both buttons are pressed (OR condition)**
 
-<code>int btn1 = 7; // Button 1 connected to pin 7
+```C++
+int btn1 = 7; // Button 1 connected to pin 7
 int btn2 = 6; // Button 2 connected to pin 6
 int ledPin = 2; // LED connected to pin 2
+
 void setup() {
   pinMode(btn1, INPUT); // Button 1 with pull-down resistor
   pinMode(btn2, INPUT); // Button 2 with pull-down resistor
   pinMode(ledPin, OUTPUT); // LED pin as output
 }
+
 void loop() {
+
   // Read button states
   int stateBtn1 = digitalRead(btn1);
   int stateBtn2 = digitalRead(btn2);
+
   // If either button is pressed, light up the LED
   if (stateBtn1 == HIGH || stateBtn2 == HIGH) {
     digitalWrite(ledPin, HIGH); // Turn on LED
@@ -573,7 +578,7 @@ void loop() {
     digitalWrite(ledPin, LOW); // Turn off LED
   }
 }
-</code>
+```
 
 **Truth table**
 
