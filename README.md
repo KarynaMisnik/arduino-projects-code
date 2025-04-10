@@ -81,7 +81,8 @@ void loop() {
  <a href="https://docs.arduino.cc/built-in-examples/basics/Blink/#code">Arduino Docs</a>  
   </details>
 
-<code>int red = 5;
+```C++
+int red = 5;
 int time = 1000 //time delay;
 void setup() {
 	// initialize colored led red connected to digital pin 5 as an output.
@@ -94,7 +95,7 @@ void loop() {
 	digitalWrite(red, LOW);   // turn the LED off by making the voltage LOW
 	delay(time);                    
 }
-</code>
+```
 
 <details>
   <summary>Source</summary>
