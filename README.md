@@ -495,18 +495,23 @@ In the Arduino programming language, integer-type variables are used primarily f
 
 **LED lights up when both buttons are pressed (AND condition)**
 
-<code>int btn1 = 7; // Button 1 connected to pin 7
+```C++
+int btn1 = 7; // Button 1 connected to pin 7
 int btn2 = 6; // Button 2 connected to pin 6
 int ledPin = 2; // LED connected to pin 2
+
 void setup() {
   pinMode(btn1, INPUT); // Button 1 with pull-down resistor
   pinMode(btn2, INPUT); // Button 2 with pull-down resistor
   pinMode(ledPin, OUTPUT); // LED pin as output
 }
+
 void loop() {
+
   // Read button states
   int stateBtn1 = digitalRead(btn1);
   int stateBtn2 = digitalRead(btn2);
+  
   // If both buttons are pressed, light up the LED
   if (stateBtn1 == HIGH && stateBtn2 == HIGH) {
     digitalWrite(ledPin, HIGH); // Turn on LED
@@ -514,7 +519,7 @@ void loop() {
     digitalWrite(ledPin, LOW); // Turn off LED
   }
 }
-</code>
+```
 
 > The LED shall light up either when both buttons have been pressed, or only one of them has been pressed.
 
