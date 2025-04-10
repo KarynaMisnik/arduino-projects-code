@@ -94,6 +94,7 @@ void setup() {
 	pinMode(red, OUTPUT);
 }
 // the loop function runs over and over again forever
+
 void loop() {
 	digitalWrite(red, HIGH);  // turn the LED on (HIGH is the voltage level)
 	delay(time);                      // wait for certain amount of time 
@@ -284,12 +285,15 @@ void changeLights() {
   
 > when the button is pushed, the input pin will go to LOW
 
-<code>int btn = 2;   // Button connected to pin 2
+```C++
+int btn = 2;   // Button connected to pin 2
 int led = 13;  // LED connected to pin 13
+
 void setup() {
   pinMode(btn, INPUT_PULLUP); // Use internal pull-up resistor
   pinMode(led, OUTPUT);
 }
+
 void loop() {
   if (digitalRead(btn) == LOW) { // Button is pressed
     digitalWrite(led, HIGH);     // Turn LED ON
@@ -297,7 +301,7 @@ void loop() {
     digitalWrite(led, LOW);      // Turn LED OFF
   }
 }
-</code>
+```
 
 <table>
 	<tr><th>When OUTPUT is HIGH(button is not pressed, led is OFF)</th>
