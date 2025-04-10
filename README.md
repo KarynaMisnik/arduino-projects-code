@@ -416,7 +416,8 @@ Button **pressed:** Pin reads **HIGH** (button connects pin to VCC).
 
 **Circuit Example (Active-High):**
 
-<code>int ledPin = 2; // LED connected to digital pin 2
+```C++
+int ledPin = 2; // LED connected to digital pin 2
 int btnPin = 7; // Button connected to digital pin 7
 void setup() {
   pinMode(ledPin, OUTPUT);
@@ -429,7 +430,7 @@ void loop() {
     digitalWrite(ledPin, LOW);       // Turn off the LED
   }
 }
-</code>
+```
 
 >LED lights up when the button is pressed, because the button is active-high (pin reads HIGH when pressed).
 
