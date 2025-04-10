@@ -311,7 +311,8 @@ void loop() {
 </td></tr>
 </table>
 
-<code>int ledPin = 2; // LED connected to digital pin 2
+```C++
+int ledPin = 2; // LED connected to digital pin 2
 int inPin = 7; // pushbutton connected to digital pin 7
 int val = 0; // variable to store the read value
 void setup() {
@@ -322,7 +323,7 @@ void loop() {
 val = digitalRead(inPin); // read the input pin
 digitalWrite(ledPin, val); // sets the LED to the button's value
 }
-</code>
+```
 
 > Button not pressed: pin 7 will read HIGH and LED will stay OFF.
 > 
