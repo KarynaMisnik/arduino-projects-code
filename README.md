@@ -53,7 +53,8 @@
  <a href="https://docs.arduino.cc/built-in-examples/basics/Blink/#code">Arduino Docs</a>  
   </details>
 
- <code>void setup() {
+ ```C++
+ void setup() {
   Serial.begin(9600); // Start serial communication
   int num = 42;       // Local variable
   pinMode(LED_BUILTIN, OUTPUT);
@@ -61,15 +62,19 @@
   Serial.print("Size of num: ");
   Serial.println(sizeof(num)); // Print size of int (typically 2 or 4 bytes)
 }
+
 void loop() {
+
   int ledState = HIGH; // Local variable
   digitalWrite(LED_BUILTIN, ledState);
+
   delay(1000);
+
   ledState = LOW;
   digitalWrite(LED_BUILTIN, ledState);
   delay(1000);
 }
-</code>
+```
 
 ## 🚨 Blinking LED
 
