@@ -689,11 +689,14 @@ delay(1000);
  <td><code>Serial.begin(9600);</code> initializes the serial communication between the Arduino and your computer.
 9600 is the baud rate, meaning the communication speed is 9600 bits per second.
 This allows data to be sent and received via the Serial Monitor </td></tr>
-	<tr><td><code>void loop() {
+	<tr><td>
+```C++
+void loop() {
   Serial.print("Hello World!");
   delay(1000);
 }
-</code></td>
+```
+	</td>
 	<td><code>Serial.print("Hello World!");</code> sends the text <code>"Hello World!"</code> to the Serial Monitor.
 <code>delay(1000); </code>pauses execution for 1000 milliseconds (1 second) before repeating.</td></tr>
 </table>
