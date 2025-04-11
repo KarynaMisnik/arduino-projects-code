@@ -855,11 +855,15 @@ A lower timeout (e.g., 500 ms) would work better.
 
 **Optimized Code (Non-Blocking Approach)**
 
-<code>void setup() {
+```C++
+void setup() {
+
     Serial.begin(9600);
     Serial.setTimeout(500);  // Reduced timeout to 500ms instead of 10 seconds
 }
+
 void loop() {
+
     Serial.println("Enter data:");
     if (Serial.available() > 0) {  // Only proceed if there is input
         String teststr = Serial.readString();
@@ -872,7 +876,7 @@ void loop() {
     }
     delay(500);  // Small delay to avoid spamming Serial Monitor
 }
-</code>
+```
 
 ## Question 5: readStringUntil() method
 
