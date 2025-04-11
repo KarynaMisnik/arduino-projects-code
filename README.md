@@ -1433,7 +1433,8 @@ void loop() {
  <a href="https://stackoverflow.com/questions/58578583/how-to-use-seven-segment-in-unoardusim">Stackoverflow</a>  
   </details>
 
-<code>// pins from 4 to 8
+```C++
+// pins from 4 to 8
 void setup()
 {
     // Set the pins 4 to 8 as OUTPUT for controlling the segments A to G
@@ -1452,7 +1453,7 @@ void loop()
         delay(1000); // Wait for 1 second to show the next digit
     }
 }
-    </code>
+    ```
 
 ## Analog signals
 
