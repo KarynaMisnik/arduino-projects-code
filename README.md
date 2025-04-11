@@ -1757,7 +1757,7 @@ void loop() {
 
 **Y2 = (A + B)(C + D):** This means the LED at pin 4 should turn ON if either A or B is pressed and either C or D is pressed.
 
-```html-nolint
+```C++
 // Define the pins connected to the switches
 const int switchPin1 = 5;  // Pin 5 for Switch A
 const int switchPin2 = 6;  // Pin 6 for Switch B
@@ -1856,7 +1856,7 @@ Pin 4 (LED Y2): Lights up when either A or B is pressed and either C or D is pre
 <li>Use S1, S2, S3, S4 as labels for the switches.</li>
 </ul>
 
-```html-nolint
+```C++
 // Define the pins connected to the switches
 const int switchPin1 = 5;  // Pin 5 for Switch A (S1)
 const int switchPin2 = 6;  // Pin 6 for Switch B (S2)
