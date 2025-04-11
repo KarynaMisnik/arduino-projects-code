@@ -711,33 +711,22 @@ void loop() {
 	<tr><td> <img width=300 height=auto src='https://github.com/user-attachments/assets/242b8eb0-eddb-40cc-813e-72bb8746248e'>
 </td>
 	<td><img width=300 height=auto src='https://github.com/user-attachments/assets/74b01254-2d42-4ed1-983c-3d1e5b29768e'></td></tr>
-	<tr><td>
-```C++
-int a = 'a';
-		
+	<tr><td><code>int a = 'a';	
 void setup(){
 Serial.begin(1200);
 }
-
 void loop(){
 Serial.print(a);
-
 delay(2000);
-
-}```
-</td><td>
-```C++
-int a = 'a';
-	
+}</code>
+</td><td><code>int a = 'a';
 void setup(){
 Serial.begin(9600);
 }
-
 void loop(){
 Serial.print(a);
-
 delay(2000);
-}```
+}</code>
 </td></tr>
 </table>
 
@@ -842,12 +831,13 @@ Removes any extra whitespace, <code>\r</code>, or <code>\n</code> from the input
 Why? When pressing Enter, Serial Monitor sends "\n" or "\r\n", which could mess up the comparison (teststr == "red").
 
 5. Checking the Input
-<code>if (teststr == "red") {
+```C++
+if (teststr == "red") {
     Serial.println("A primary color");
 } else {
     Serial.println("Something else");
 }
-</code>
+```
 
 If the user typed "red", it prints "A primary color".
 
