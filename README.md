@@ -788,22 +788,28 @@ At 9600 baud, bits are much **faster** (104.2 µs per bit), making them harder t
 
 #### Receiving serial data
 
-<code>void setup(){
+```C++
+void setup(){
+
 Serial.begin(9600);
 Serial.setTimeout(10000);
 }
 void loop(){
+
 Serial.println("Enter data:");
 while (Serial.available() == 0){
+
 } //wait for data available
 String teststr = Serial.readString(); //read until timeout
 teststr.trim(); // remove any \r \n whitespace at the end of the String
+
 if (teststr == "red"){
 Serial.println("A primary color");
 }else{
 Serial.println("Something else");
 }
-}</code>
+}
+```
 
 This code reads a string input from the Serial Monitor and checks if the user typed "red". If "red" is received, it prints "A primary color"; otherwise, it prints "Something else".
 
