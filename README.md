@@ -947,7 +947,8 @@ void loop() {
 > At this point we have not dealt with interrupts, which would allow us to immediately detect the pushing of a button.
 > Then, add two more LEDs (red and green) for the pedestrian crossing. These would be for the people walking (pedestrians), not the cars driving by.
 
-<code>int carRed = 12;    
+```C++
+int carRed = 12;    
 int carYellow = 11;
 int carGreen = 10;
 int button = 9;     
@@ -955,6 +956,7 @@ int pedRed = 8;
 int pedGreen = 7;
 int crossTime = 10000; // Pedestrian crossing time (10 seconds)
 bool pedestrianRequested = false;
+
 void setup() {
   pinMode(carRed, OUTPUT);
   pinMode(carYellow, OUTPUT);
@@ -962,11 +964,14 @@ void setup() {
   pinMode(pedRed, OUTPUT);
   pinMode(pedGreen, OUTPUT);
   pinMode(button, INPUT_PULLUP); // Enable internal pull-up resistor
+
   // Initial state: Cars green, Pedestrians red
   digitalWrite(carGreen, HIGH);
   digitalWrite(pedRed, HIGH);
 }
+
 void loop() {
+
   // Check if pedestrian button is pressed
   if (digitalRead(button) == LOW) {
     pedestrianRequested = true; // Set flag
@@ -978,58 +983,79 @@ void loop() {
     pedestrianCrossing();  // Handle pedestrian crossing
   }
 }
+
 // Normal car traffic cycle (Green → Yellow → Red → Yellow → Green)
 void normalTrafficCycle() {
+
   digitalWrite(carGreen, HIGH);
   digitalWrite(carYellow, LOW);
   digitalWrite(carRed, LOW);
+
   delay(5000);
+
   digitalWrite(carGreen, LOW);
   digitalWrite(carYellow, HIGH);
+
   delay(2000);
+
   digitalWrite(carYellow, LOW);
   digitalWrite(carRed, HIGH);
+
   delay(5000);
   // Red → Yellow → Green
+
   digitalWrite(carRed, LOW);
   digitalWrite(carYellow, HIGH);
+
   delay(2000);
+
   digitalWrite(carYellow, LOW);
   digitalWrite(carGreen, HIGH);
 }
 // Handle pedestrian crossing sequence
 void pedestrianCrossing() {
+
   // Stop cars
   digitalWrite(carGreen, LOW);
   digitalWrite(carYellow, HIGH);
+
   delay(2000);
   digitalWrite(carYellow, LOW);
   digitalWrite(carRed, HIGH);
-  delay(1000); 
+
+  delay(1000);
+
   // Allow pedestrians to cross
   digitalWrite(pedRed, LOW);
   digitalWrite(pedGreen, HIGH);
+
   delay(crossTime);
+
   // Flash pedestrian green before stopping crossing
   for (int x = 0; x < 10; x++) {
     digitalWrite(pedGreen, HIGH);
+
     delay(250);
     digitalWrite(pedGreen, LOW);
+
     delay(250);
   }
   // Stop pedestrians
   digitalWrite(pedRed, HIGH);
+
   delay(500);
+
   // Red → Yellow → Green
   digitalWrite(carRed, LOW);
   digitalWrite(carYellow, HIGH);
+
   delay(2000);
+
   digitalWrite(carYellow, LOW);
   digitalWrite(carGreen, HIGH);
   pedestrianRequested = false; // Reset pedestrian request
 }
-
- </code>
+```
 
  ## 🚦 Custom Delay as a User Input in the beginning
 
