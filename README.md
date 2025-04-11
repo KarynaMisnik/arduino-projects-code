@@ -708,21 +708,34 @@ This allows data to be sent and received via the Serial Monitor </td></tr>
 	<tr><td> <img width=300 height=auto src='https://github.com/user-attachments/assets/242b8eb0-eddb-40cc-813e-72bb8746248e'>
 </td>
 	<td><img width=300 height=auto src='https://github.com/user-attachments/assets/74b01254-2d42-4ed1-983c-3d1e5b29768e'></td></tr>
-	<tr><td><code>int a = 'a';
+	<tr><td>
+```C++
+int a = 'a';
+		
 void setup(){
 Serial.begin(1200);
 }
+
 void loop(){
 Serial.print(a);
+
 delay(2000);
-}</code></td><td><code>int a = 'a';
+
+}```
+</td><td>
+```C++
+int a = 'a';
+	
 void setup(){
 Serial.begin(9600);
 }
+
 void loop(){
 Serial.print(a);
+
 delay(2000);
-}</code></td></tr>
+}```
+</td></tr>
 </table>
 
 **Idle State (HIGH)**
