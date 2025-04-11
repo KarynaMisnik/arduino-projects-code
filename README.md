@@ -1999,7 +1999,7 @@ If the number 1 is received, the built-in LED (connected to pin 13) will be turn
 
 If the number 2 is received, the built-in LED (connected to pin 13) will be turned OFF.
 
-```html-nolint
+```C++
 // Define the pins connected to the switches
 const int switchPin1 = 5;  // Pin 5 for Switch A (S1)
 const int switchPin2 = 6;  // Pin 6 for Switch B (S2)
