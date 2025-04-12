@@ -903,12 +903,16 @@ The timeout <code>(Serial.setTimeout())</code> expires.
 
 > Note: If the read data is something else than one of the options above, an error message is printed.
 
-<code>void setup() {
+```C++
+void setup() {
     Serial.begin(9600);  // Start serial communication
     Serial.setTimeout(500);  // Set timeout for Serial.readString()
 }
+
 void loop() {
+
     Serial.println("Enter a color (red, yellow, green):");
+
     if (Serial.available() > 0) {  // Check if data is available
         String input = Serial.readStringUntil('\n');  // Read input until newline
         input.trim();  // Remove any extra spaces or newlines
@@ -926,7 +930,7 @@ void loop() {
 
     delay(500);  // Small delay to prevent spamming the Serial Monitor
 }
-</code>
+```
 
 ## 🚦🚙🚶 Traffic Lights with pedestrian pushbutton
 
