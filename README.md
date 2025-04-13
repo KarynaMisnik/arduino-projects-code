@@ -2156,8 +2156,13 @@ After turning the LED on or off, we provide feedback to the Serial Monitor with 
 
 > What must the resistance of R4 be, if with 50V input voltage the voltage over R4 is 5V? The connection  shall contain R1=R2=R3=3 kΩ.
 
+![4-resistors-circuit](https://github.com/user-attachments/assets/786885ec-732a-4164-9dee-5c8cd09aa943)
 
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/786885ec-732a-4164-9dee-5c8cd09aa943"  width="500">
+  <br>
+  <em>4 Resistors Circuit scheme</em>
+</p>
 
 
 
