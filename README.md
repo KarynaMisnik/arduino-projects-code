@@ -2244,6 +2244,9 @@ And in that case, the total current **I** is the same through all resistors.
 
 From **Ohm’s Law**:
 
+$I = \frac{Vin}{Rtotal}$
+
+$I = \frac{50}{9000 - Rx}$
 
 
 
