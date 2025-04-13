@@ -1335,11 +1335,12 @@ The result is 1 only if both bits are 1; otherwise, the result is 0.
 
 **Example:**
 
-<code>int a = 5;   // Binary:  00000101
+```C++
+int a = 5;   // Binary:  00000101
 int b = 3;   // Binary:  00000011
 int c = a & b; // Bitwise AND
 Serial.println(c); // Output: 1
-</code>
+```
 
 🔍 Step-by-Step (Bitwise Operation)
 
@@ -1493,14 +1494,17 @@ void loop()
 
 **Example:**
 
-<code>int ledPin = 9; // LED connected to digital pin 9
+```C++
+int ledPin = 9; // LED connected to digital pin 9
 int analogPin = A0; // potentiometer connected to analog pin A0
 int val = 0; // variable to store the read value
+
 void setup() {
   pinMode(ledPin, OUTPUT); // set LED pin as OUTPUT
   pinMode(analogPin, INPUT); // set the analog pin as INPUT
   Serial.begin(9600); // start the Serial Monitor at 9600 baud rate
 }
+
 void loop() {
   val = analogRead(analogPin); // read the input pin (potentiometer)
   Serial.println(val); // print the potentiometer value to the Serial Monitor
@@ -1510,9 +1514,10 @@ void loop() {
   } else {
     digitalWrite(ledPin, LOW); // turn LED off
   }
+
   delay(100); // small delay to avoid spamming the Serial Monitor
 }
-</code>
+```
 
 **Explanation:**
 
@@ -1575,10 +1580,13 @@ referenceVoltage is typically 5V (unless configured otherwise)
 
 If analogRead() returns 512, that corresponds to approximately half of the reference voltage, i.e., around 2.5V (if using a 5V reference).
 
-<code>int sensorValue = analogRead(A0); // Read analog value from pin A0
+```C++
+int sensorValue = analogRead(A0); // Read analog value from pin A0
+
 float voltage = sensorValue * (5.0 / 1023.0); // Convert to voltage (assuming 5V reference)
+
 Serial.println(voltage); // Print the voltage value
-</code>
+```
 
 # Arduino Environment
 
@@ -2179,9 +2187,11 @@ If R1, R2, R3 are in series, their <ins>total resistance</ins> is:
 
 **R123=R1+R2+R3=3k+3k+3k=9kΩ**
 
+And in that case, the total current **I** is the same through all resistors.
 
+**R4​=Rx**​ for now.
 
-
+From **Ohm’s Law**:
 
 
 
