@@ -1065,7 +1065,8 @@ entered
 > • print out messages to the Serial Monitor which tell something about what the program is
 doing
 
-<code>int carRed = 12;    
+```C++
+int carRed = 12;    
 int carYellow = 11;
 int carGreen = 10;
 int defaultGreenTime = 5000;
@@ -1073,21 +1074,27 @@ int defaultYellowTime = 2000;
 int defaultRedTime = 5000;
 int greenTime, yellowTime, redTime;
 unsigned long startTime;
+
 void setup() {
 	Serial.begin(9600);
 	pinMode(carRed, OUTPUT);
 	pinMode(carYellow, OUTPUT);
 	pinMode(carGreen, OUTPUT);
+
 	Serial.println("Traffic Light System");
 	Serial.println("Enter delays in milliseconds (Green, Yellow, Red).");
 	Serial.println("Example: 5000 2000 5000");
 	Serial.println("Waiting for input... (20 seconds)");
+
 	startTime = millis();
+
 	while (millis() - startTime < 20000) {
 		if (Serial.available()) {
+
 			greenTime = Serial.parseInt();
 			yellowTime = Serial.parseInt();
 			redTime = Serial.parseInt();
+
 			if (greenTime > 0 && yellowTime > 0 && redTime > 0) {
 				Serial.println("Custom delays set!");
 				break;
@@ -1095,7 +1102,9 @@ void setup() {
 		}
 	}
 	if (greenTime == 0 || yellowTime == 0 || redTime == 0) {
+
 		Serial.println("No input received. Using default delays.");
+
 		greenTime = defaultGreenTime;
 		yellowTime = defaultYellowTime;
 		redTime = defaultRedTime;
@@ -1106,25 +1115,37 @@ void setup() {
 }
 void loop() {
 	Serial.println("Green Light ON");
+
 	digitalWrite(carGreen, HIGH);
 	digitalWrite(carYellow, LOW);
 	digitalWrite(carRed, LOW);
+
 	delay(greenTime);
+
 	Serial.println("Yellow Light ON");
+
 	digitalWrite(carGreen, LOW);
 	digitalWrite(carYellow, HIGH);
+
 	delay(yellowTime);
+
 	Serial.println("Red Light ON");
+
 	digitalWrite(carYellow, LOW);
 	digitalWrite(carRed, HIGH);
+
 	delay(redTime);
+
 	Serial.println("Yellow Light ON (Before Green)");
+
 	digitalWrite(carRed, LOW);
 	digitalWrite(carYellow, HIGH);
+
 	delay(yellowTime);
+
 	Serial.println("Restarting Cycle...");
 }
-</code>
+```
 
 ## Custom Delay as a User Input at any time
 
@@ -1132,59 +1153,83 @@ void loop() {
 > If the user enters “S” while the lights are operating, the yellow LED is lit and the user can enter the delays.
 > When this is done, the lights resume normal operations (starting with the red LED being on).
 
-<code>int carRed = 12;    
+```C++
+int carRed = 12;    
 int carYellow = 11;
 int carGreen = 10;
 int defaultGreenTime = 5000;
 int defaultYellowTime = 2000;
 int defaultRedTime = 5000;
 int greenTime, yellowTime, redTime; // Declare variables
+
 void setup() {
+
 	Serial.begin(9600);
+
 	pinMode(carRed, OUTPUT);
 	pinMode(carYellow, OUTPUT);
 	pinMode(carGreen, OUTPUT);
+
 	Serial.println("Traffic Light System");
 	Serial.println("Enter delays in milliseconds (Green, Yellow, Red).");
 	Serial.println("Example: 5000 2000 5000");
 	Serial.println("Type 'S' at any time to change delays.");
+
 	// **Explicitly Initialize Variables with Defaults**
 	Serial.println("No input received. Using default delays.");
+
 	greenTime = defaultGreenTime;
 	yellowTime = defaultYellowTime;
 	redTime = defaultRedTime;
 	getDelays(); // Function to get delay values
 }
+
 void loop() {
+
 	checkForUpdate(); // Check if the user pressed "S" during operation
 	Serial.println("Green Light ON");
+
 	digitalWrite(carGreen, HIGH);
 	digitalWrite(carYellow, LOW);
 	digitalWrite(carRed, LOW);
+
 	delayWithCheck(greenTime);
+
 	Serial.println("Yellow Light ON");
+
 	digitalWrite(carGreen, LOW);
 	digitalWrite(carYellow, HIGH);
+
 	delayWithCheck(yellowTime);
+
 	Serial.println("Red Light ON");
 	digitalWrite(carYellow, LOW);
 	digitalWrite(carRed, HIGH);
+
 	delayWithCheck(redTime);
+
 	Serial.println("Yellow Light ON (Before Green)");
+
 	digitalWrite(carRed, LOW);
 	digitalWrite(carYellow, HIGH);
+
 	delayWithCheck(yellowTime);
+
 	Serial.println("Restarting Cycle...");
 }
 // Function to get delay values from Serial Monitor
 void getDelays() {
+
 	unsigned long startTime = millis();
 	Serial.println("Waiting for input... (20 seconds)");
+
 	while (millis() - startTime < 20000) {
 		if (Serial.available()) {
+
 			greenTime = Serial.parseInt();
 			yellowTime = Serial.parseInt();
 			redTime = Serial.parseInt();
+
 			if (greenTime > 0 && yellowTime > 0 && redTime > 0) {
 				Serial.println("Custom delays set!");
 				return;
@@ -1194,15 +1239,20 @@ void getDelays() {
 }
 // Function to check for user input to update delays
 void checkForUpdate() {
+
 	if (Serial.available()) {
 		char command = Serial.read();
 		if (command == 'S' || command == 's') {
+
 			Serial.println("Updating delays. Enter new values:");
 			Serial.println("Example: 5000 2000 5000");
+
 			digitalWrite(carGreen, LOW);
 			digitalWrite(carRed, LOW);
 			digitalWrite(carYellow, HIGH); // Yellow ON while waiting for input
+
 			getDelays(); // Get new delay values
+
 			Serial.println("Resuming from Red Light...");
 			digitalWrite(carYellow, LOW);
 			digitalWrite(carRed, HIGH); // Start from red
@@ -1212,11 +1262,12 @@ void checkForUpdate() {
 // Function to handle delays while checking for user input
 void delayWithCheck(int duration) {
 	unsigned long start = millis();
+
 	while (millis() - start < duration) {
 		checkForUpdate(); // Allow checking for "S" during delay
 	}
 }
-</code>
+```
 
 ## Bit-level access
 
