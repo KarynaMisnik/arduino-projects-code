@@ -2260,16 +2260,28 @@ VR_4 = I \cdot R_x = 5
 $$
 
 
-Substitute II into this:
+Substitute **I** into this:
 
 $$
 \left(\frac{50}{9000 - R_x} \right) \cdot R_x = 5
 $$
 
 
+Multiply both sides by 9000+Rx9000+Rx​:
 
+50⋅Rx​=5⋅(9000+Rx​)
 
+Distribute:
 
+50Rx​=45000+5Rx​
+
+Subtract 5Rx5Rx​ from both sides
+
+45Rx​=45000
+
+$$
+R_x = 4500 \cdot 45 = 1000Ω = 1kΩ
+$$
 
 
 
