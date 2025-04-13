@@ -2280,7 +2280,7 @@ Subtract 5Rx5Rx​ from both sides
 45Rx​=45000
 
 $$
-R_x = \left(\frac{4500}{45} \right) = 1000Ω = 1kΩ
+R_x = \frac{4500}{45}  = 1000Ω = 1kΩ
 $$
 
 
