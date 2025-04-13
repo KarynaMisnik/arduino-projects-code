@@ -2163,6 +2163,21 @@ After turning the LED on or off, we provide feedback to the Serial Monitor with 
   <em>4 Resistors Circuit scheme</em>
 </p>
 
+**Given:**
+
+Input voltage Vin=50 VVin​=50 V
+
+Voltage across R4=5 VR4​=5 V
+
+Resistors R1=R2=R3=3 kΩR1​=R2​=R3​=3 kΩ
+
+R1,R2,R3R1​,R2​,R3​ are in series
+
+The connection of R4R4​ is in parallel with the entire series of R1, R2, and R3.
+
+If R1, R2, R3 are in series, their <ins>total resistance</ins> is:
+
+**R123=R1+R2+R3=3k+3k+3k=9kΩ**
 
 
 
