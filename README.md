@@ -2244,10 +2244,27 @@ And in that case, the total current **I** is the same through all resistors.
 
 From **Ohm’s Law**:
 
-$I = \frac{Vin}{Rtotal}$
+$$
+I = \frac{V_{in}}{R_{total}}
+$$
 
-$I = \frac{50}{9000 - Rx}$
+$$
+I = \frac{50}{9000 - R_x}
+$$
 
+
+Voltage over R4R4​ is given as 5V:
+
+$$
+VR_4 = I \cdot R_x = 5
+$$
+
+
+Substitute II into this:
+
+$$
+\left(\frac{50}{9000 - R_x} \right) \cdot R_x = 5
+$$
 
 
 
