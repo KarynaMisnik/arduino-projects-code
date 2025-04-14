@@ -2275,7 +2275,7 @@ Distribute:
 
 $$ 50R_x ​= 45000 + 5R_x​ $$
 
-Subtract $$ 5R_x​ $$ from both sides
+Subtract ${5R{x}}$ from both sides
 
 $$ 45R_x ​= 45000 $$
 
@@ -2307,7 +2307,7 @@ Use <ins>Ohm's Law:</ins>
 
 $I = \frac{V_{R_{4}}}{R_{4}}$
 
-R4​=1000 Ω
+${R_{4}} = 1000 Ω$
 
 ${V_{R_{4}}}$ is measured directly with the second multimeter.
 
