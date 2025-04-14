@@ -2267,7 +2267,7 @@ $$
 $$
 
 
-Multiply both sides by $$ 9000 + R_x​ $$
+Multiply both sides by $9000 + {R_{x}}$
 
 $$ 50⋅R_x​ = 5⋅(9000+R_x​) $$
 
@@ -2315,13 +2315,16 @@ ${V_{R_{4}}}$ is measured directly with the second multimeter.
 **Calculate Power Dissipation of Each Resistor**
 
 
+Since the circuit is in series, current **I** is the same through all resistors.
+
+For each resistor:
+
+$P = I^2 \cdot R$
+
+So:
 
 
-
-
-
-
-
+${P_{R_{1}}} = I^2 \cdot 3000$
 
 
 
