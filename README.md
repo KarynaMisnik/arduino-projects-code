@@ -2340,9 +2340,18 @@ ${P_{R_{4}}} = I^2 \cdot 1000$
 >where resistor $R_{4}$'s voltage drop is used to estimate the entire circuit’s input voltage.
 
 
+✅ Before coding, measure the Arduino’s 5V rail using a multimeter and record it in a table. It should be close to **5.00V**
+✅ Calculate the Coefficient:
 
+We map:
 
+<code>analogRead() = 0 → calculatedVoltage = 0V</code>
 
+<code>analogRead() = 1023 → calculatedVoltage = 30V>/code>
+
+So the coefficient is:
+
+$\text{coefficient} = \frac{30}{1023} \approx 0.02933$
 
 
 
