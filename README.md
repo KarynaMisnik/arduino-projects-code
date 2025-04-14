@@ -2283,7 +2283,23 @@ $$
 R_x = \frac{4500}{45}  = 1000Ω = 1kΩ
 $$
 
+#### Calculate current using R4R4​, and compute power dissipation for each resistor
 
+✅ Experimental Setup Overview
+
+We have:
+
+A series circuit: 
+
+$$ R_1 = R_2 = R_3 = 3kΩ $$
+
+Two multimeters:
+
+One for the <ins>total voltage (U)</ins> across the whole series circuit
+
+One for the <ins>voltage across</ins> R4R4​ only
+
+Power supply (GRP-6030D): Adjusted from 0V to 30V in 5V steps
 
 
 
