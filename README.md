@@ -2267,17 +2267,17 @@ $$
 $$
 
 
-Multiply both sides by 9000+Rx9000+Rx​:
+Multiply both sides by $$ 9000 + R_x​ $$
 
-50⋅Rx​=5⋅(9000+Rx​)
+$$ 50⋅R_x​ = 5⋅(9000+R_x​) $$
 
 Distribute:
 
-50Rx​=45000+5Rx​
+$$ 50R_x ​= 45000 + 5R_x​ $$
 
-Subtract 5Rx5Rx​ from both sides
+Subtract $$ 5R_x​ $$ from both sides
 
-45Rx​=45000
+$$ 45R_x ​= 45000 $$
 
 $$
 R_x = \frac{4500}{45}  = 1000Ω = 1kΩ
