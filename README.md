@@ -2301,5 +2301,43 @@ One for the <ins>voltage across</ins> R4R4​ only
 
 Power supply (GRP-6030D): Adjusted from 0V to 30V in 5V steps
 
+**Calculate Current Using R4:**
+
+Use <ins>Ohm's Law:</ins>
+
+$I = \frac{V_{R_{4}}}{R_{4}}$
+
+R4​=1000 Ω
+
+${V_{R_{4}}}$ is measured directly with the second multimeter.
+
+
+**Calculate Power Dissipation of Each Resistor**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
