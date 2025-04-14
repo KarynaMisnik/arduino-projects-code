@@ -2333,7 +2333,11 @@ ${P_{R_{3}}} = I^2 \cdot 3000$
 ${P_{R_{4}}} = I^2 \cdot 1000$
 
 
+#### Voltage monitoring system
 
+>[!NOTE:]
+>Build a voltage monitoring system using the Arduino UNO’s ADC input,
+>where resistor $R_{4}$'s voltage drop is used to estimate the entire circuit’s input voltage.
 
 
 
