@@ -42,7 +42,7 @@
 * [Pins, Switches and Pull-Up Resistors](#pins-switches-and-pull-up-resistors)
   - [Adding a Serial Monitor](#adding-a-serial-monitor)
 * [Temperature Measurements](#temperature-measurements)
-* [Analog temperature sensor and voltage measurement](#analog-temperature-sensor-and-voltage-measurement.)
+* [Analog temperature sensor and voltage measurement](#analog-temperature-sensor-and-voltage-measurement)
   
 
  ## Basic Code Editing
