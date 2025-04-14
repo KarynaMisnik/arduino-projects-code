@@ -2335,8 +2335,7 @@ ${P_{R_{4}}} = I^2 \cdot 1000$
 
 #### Voltage monitoring system
 
->[!NOTE:]
->Build a voltage monitoring system using the Arduino UNO’s ADC input,
+>NOTE: Build a voltage monitoring system using the Arduino UNO’s ADC input,
 >where resistor $R_{4}$'s voltage drop is used to estimate the entire circuit’s input voltage.
 
 
@@ -2347,18 +2346,47 @@ We map:
 
 <code>analogRead() = 0 → calculatedVoltage = 0V</code>
 
-<code>analogRead() = 1023 → calculatedVoltage = 30V>/code>
+<code>analogRead() = 1023 → calculatedVoltage = 30V></code>
 
 So the coefficient is:
 
-$\text{coefficient} = \frac{30}{1023} \approx 0.02933$
+$$
+\text{coefficient} = \frac{30}{1023} \approx 0.02933
+$$
 
+✅ Arduino Circuit Connection
 
+Connect voltage over R4 to A0
 
+Make sure the voltage over R4 never exceeds 5V (it's already 5V max in your setup — safe for analogRead)
 
+```C++
+const int analogPin = A0;
+const float coefficient = 30.0 / 1023.0; // ≈ 0.02933
+int lastReading = -1;
 
+void setup() {
+  Serial.begin(9600);
+}
 
+void loop() {
+  int adcValue = analogRead(analogPin);
 
+  // Only print if value has changed
+  if (adcValue != lastReading) {
+    lastReading = adcValue;
+    float inputVoltage = adcValue * coefficient;
 
+    Serial.print("ADC Value: ");
+    Serial.print(adcValue);
+    Serial.print(" | Calculated Input Voltage: ");
+    Serial.print(inputVoltage, 2); // 2 decimal places
+    Serial.println(" V");
+  }
+
+  delay(100); // Optional debounce delay
+}
+
+```
 
 
