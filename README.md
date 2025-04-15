@@ -2462,7 +2462,53 @@ void loop() {
 > the Arduino >development board (pin 13) as the output for the thermostat.
 
 
+```C++
+// Amplifier resistor values
+const float R1 = 10000.0; // 10kΩ
+const float R2 = 47000.0; // 47kΩ
 
+// ADC reference voltage
+const float Vref = 5.0; // Arduino UNO reference voltage
+
+// Pins
+const int sensorPin = A0;
+const int ledPin = 13;  // Built-in LED
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int adcValue = analogRead(sensorPin);
+
+  // Convert ADC to amplified voltage
+  float amplifiedVoltage = (adcValue / 1023.0) * Vref;
+
+  // Undo amplifier gain
+  float sensorVoltage = amplifiedVoltage * (R1 / (R1 + R2));
+
+  // Convert voltage to temperature in °C
+  float temperatureC = sensorVoltage * 100.0;
+
+  // LED control without hysteresis (direct flicker-style response)
+  if (temperatureC < 19.0) {
+    digitalWrite(ledPin, HIGH); // Turn LED on
+  } else if (temperatureC > 21.0) {
+    digitalWrite(ledPin, LOW);  // Turn LED off
+  }
+  // (Between 19°C and 21°C → no change; keeps last state)
+
+  // Output for monitoring
+  Serial.print("Temperature: ");
+  Serial.print(temperatureC);
+  Serial.print(" °C | LED: ");
+  Serial.println(digitalRead(ledPin) ? "ON" : "OFF");
+
+  delay(500); // Faster updates for visible flickering
+}
+
+```
 
 
 
