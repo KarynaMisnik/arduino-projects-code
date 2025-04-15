@@ -43,6 +43,7 @@
   - [Adding a Serial Monitor](#adding-a-serial-monitor)
 * [Temperature Measurements](#temperature-measurements)
 * [Analog temperature sensor and voltage measurement](#analog-temperature-sensor-and-voltage-measurement)
+* [LM35DZ sensor](#LM35DZ-sensor)
   
 
  ## Basic Code Editing
@@ -2389,8 +2390,9 @@ void loop() {
 
 ```
 
-> Note:
-> a program that can measure temperature and send it via serial
+# LM35DZ sensor
+
+> Write a program that can measure temperature and send it via serial
 > communication to a computer, considering that the LM35DZ sensor provides 10 mV/°C
 > and the temperature range is 0°C to 45°C.
 
@@ -2456,7 +2458,6 @@ void loop() {
 
 ```
 
-> Note:
 > Add thermostat functionality to the program, with a lower limit of
 > 19°C and an upper limit of 21°C, and use the built-in LED lamp of
 > the Arduino >development board (pin 13) as the output for the thermostat.
