@@ -2407,8 +2407,17 @@ Voltage from sensor (Uin) is amplified:
 
 $$U_{\text{out}} = \left( \frac{R_1 + R_2}{R_1} \right) \cdot U_{\text{in}}$$
 
+So to get the real temperature, we need to reverse the amplification in code.
 
 
+✅ Step-by-step Formula in Code:
+
+<ul>
+	<li>Read analog voltage from sensor (after amplifier)</li>
+	<li>Convert analog value to voltage</li>
+	<li>Undo the amplification</li>
+	<li>Convert voltage to temperature (°C)</li>
+</ul>
 
 
 
