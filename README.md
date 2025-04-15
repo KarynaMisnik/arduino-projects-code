@@ -2393,3 +2393,42 @@ void loop() {
 > a program that can measure temperature and send it via serial
 > communication to a computer, considering that the LM35DZ sensor provides 10 mV/°C
 > and the temperature range is 0°C to 45°C.
+
+🧠 Background:
+
+LM35DZ Output: 10 mV/°C10 mV/°C
+
+ADC on Arduino UNO: 10-bit resolution → values from 0 to 1023
+
+Reference voltage (Vref): 15V
+
+Voltage from sensor (Uin) is amplified:
+
+
+$U_{\text{out}} = \left( \frac{R_1 + R_2}{R_1} \right) \cdot U_{\text{in}}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
