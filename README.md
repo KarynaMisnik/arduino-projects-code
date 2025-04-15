@@ -2389,4 +2389,7 @@ void loop() {
 
 ```
 
-
+> Note:
+> a program that can measure temperature and send it via serial
+> communication to a computer, considering that the LM35DZ sensor provides 10 mV/°C
+> and the temperature range is 0°C to 45°C.
