@@ -2456,6 +2456,10 @@ void loop() {
 
 ```
 
+> Note:
+> Add thermostat functionality to the program, with a lower limit of
+> 19°C and an upper limit of 21°C, and use the built-in LED lamp of
+> the Arduino >development board (pin 13) as the output for the thermostat.
 
 
 
