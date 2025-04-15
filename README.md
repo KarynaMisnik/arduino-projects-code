@@ -2405,7 +2405,7 @@ Reference voltage (Vref): 15V
 Voltage from sensor (Uin) is amplified:
 
 
-$U_{\text{out}} = \left( \frac{R_1 + R_2}{R_1} \right) \cdot U_{\text{in}}$
+$$U_{\text{out}} = \left( \frac{R_1 + R_2}{R_1} \right) \cdot U_{\text{in}}$$
 
 
 
