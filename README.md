@@ -2419,7 +2419,42 @@ So to get the real temperature, we need to reverse the amplification in code.
 	<li>Convert voltage to temperature (°C)</li>
 </ul>
 
+```C++
+// Amplifier resistor values
+const float R1 = 10000.0; // 10kΩ
+const float R2 = 47000.0; // 47kΩ
 
+// ADC reference voltage
+const float Vref = 15.0;    // 15V for Arduino UNO
+
+// LM35DZ pin
+const int sensorPin = A0;
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int adcValue = analogRead(sensorPin);
+
+  // Convert ADC value to voltage
+  float amplifiedVoltage = (adcValue / 1023.0) * Vref;
+
+  // Undo the amplifier gain: Uin = Uout * R1 / (R1 + R2)
+  float sensorVoltage = amplifiedVoltage * (R1 / (R1 + R2));
+
+  // Convert voltage to temperature
+  float temperatureC = sensorVoltage * 100.0; // 10mV/°C = 0.01V/°C → multiply by 100
+
+  // Send to serial monitor
+  Serial.print("Temperature: ");
+  Serial.print(temperatureC);
+  Serial.println(" °C");
+
+  delay(1000); // 1 second delay
+}
+
+```
 
 
 
