@@ -2510,7 +2510,13 @@ void loop() {
 
 ```
 
+🔍 Behavior:
 
+< 19°C → LED ON
+
+> 21°C → LED OFF
+
+Between 19–21°C → LED holds its last state 
 
 
 
