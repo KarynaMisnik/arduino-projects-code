@@ -2468,7 +2468,7 @@ const float R1 = 10000.0; // 10kΩ
 const float R2 = 47000.0; // 47kΩ
 
 // ADC reference voltage
-const float Vref = 5.0; // Arduino UNO reference voltage
+const float Vref = 15.0; // Arduino UNO reference voltage
 
 // Pins
 const int sensorPin = A0;
