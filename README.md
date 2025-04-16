@@ -1806,7 +1806,7 @@ void loop() {
 }
 
 ```
-
+>[!NOTE]
 > The next program controls one LED at pin 3 using the Boolean algebra expression
 > Y1=AB+CD and control one LED at pin 4 using the Boolean expression Y2=(A+B)(C+D).
 > A,B,C,D are the switches on the switchbox.
