@@ -1295,7 +1295,8 @@ promptly and accurately.
 
 **Example:**
 
-<code>unsigned char count;  // Declares an 8-bit unsigned character (0 to 255)
+```C++
+unsigned char count;  // Declares an 8-bit unsigned character (0 to 255)
 void setup() {
     count = 200;        // Initializes count to 200
     Serial.begin(9600); // Starts the Serial Monitor at 9600 baud rate
@@ -1305,11 +1306,12 @@ void loop() {
     Serial.println(count, BIN); // Prints count in binary format
     delay(1000);        // Waits 1 second
 }
-</code>
+```
 
 **Program Output Example:**
 
-<code>11001001  // 201
+```C++
+11001001  // 201
 11001010  // 202
 11001011  // 203
 ...
@@ -1317,7 +1319,7 @@ void loop() {
 00000000  // 0  (Overflow occurs!)
 00000001  // 1
 ...
-</code>
+```
 
 > Note: Since unsigned char is only 8 bits (0 to 255), after reaching 255, the next increment makes it wrap around to 0 (like a circular counter).
 
