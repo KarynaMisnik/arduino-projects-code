@@ -2227,13 +2227,13 @@ After turning the LED on or off, we provide feedback to the Serial Monitor with 
 
 Input voltage ${V_{in}} = 50V$
 
-Voltage across R4=5 VR4​=5 V
+Voltage across ${R_{4}} = 5V$
 
-Resistors R1=R2=R3=3 kΩR1​=R2​=R3​=3 kΩ
+Resistors ${R_{1}} = {R_{2}} = {R_{3}} = 3kΩ $
 
 R1,R2,R3R1​,R2​,R3​ are in series
 
-The connection of R4R4​ is in parallel with the entire series of R1, R2, and R3.
+The connection of  ${R_{4}}​$ is in parallel with the entire series of ${R_{1}}​$, ${R_{2}}​$, and ${R_{3}}​$.
 
 If ${R_{1}}$, ${R_{2}}$, ${R_{3}}$ are in series, their <ins>total resistance</ins> is:
 
