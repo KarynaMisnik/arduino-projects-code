@@ -2298,7 +2298,7 @@ Two multimeters:
 
 One for the <ins>total voltage (U)</ins> across the whole series circuit
 
-One for the <ins>voltage across</ins> R4R4​ only
+One for the <ins>voltage across</ins> ${R_{4}}$ only
 
 Power supply (GRP-6030D): Adjusted from 0V to 30V in 5V steps
 
