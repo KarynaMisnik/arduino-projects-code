@@ -1327,7 +1327,8 @@ void loop() {
 
 **Modified code:**
 
-<code>char count;  // Changed from "unsigned char" to "char"
+```C++
+char count;  // Changed from "unsigned char" to "char"
 void setup() {
     count = 100;       // Changed from 200 to 100
     Serial.begin(9600);
@@ -1337,11 +1338,12 @@ void loop() {
     Serial.println(count, BIN);  // Print count in binary format
     delay(1000);
 }
-</code>
+```
 
 **Program Output Example:**
 
-<code>01100101  // 101
+```C++
+01100101  // 101
 01100110  // 102
 ...
 01111111  // 127 (Max value for signed char)
@@ -1351,7 +1353,7 @@ void loop() {
 ...
 00000000  // 0
 00000001  // 1
-</code>
+```
 
 **Changed unsigned char to char:**
 <ul>
@@ -1398,11 +1400,12 @@ Serial.println(c); // Output: 1
 
 🔍 Step-by-Step (Bitwise Operation)
 
-<code>00000101  (5 in binary)
+```C++
+00000101  (5 in binary)
 &  00000011  (3 in binary)
 Result:
    00000001  (1 in binary) → Result: 1
-</code>
+```
 
 **Key Properties:**
 
@@ -1412,11 +1415,12 @@ Result:
 
 **Example:**
 
-<code>#define BITMASK 0x02  // BITMASK is defined as 0x02 (Binary: 00000010)
+```C++
+#define BITMASK 0x02  // BITMASK is defined as 0x02 (Binary: 00000010)
 unsigned char value = 7;  // value is 7 (Binary: 00000111)
 unsigned char result;
 result = value & BITMASK; // Perform bitwise AND operation
-</code>
+```
 
 **Step-by-Step Execution**
 
@@ -1425,11 +1429,12 @@ value = 7 → Binary: 00000111
 BITMASK = 0x02 → Binary: 00000010
 
 2️⃣ Apply Bitwise AND (&)
-<code>   00000111   (7 in binary)
+```C++
+00000111   (7 in binary)
 &  00000010   (BITMASK: 2 in binary)
 Result:
-   00000010   (Result: 2 in binary)
-</code>
+00000010   (Result: 2 in binary)
+```
 
 3️⃣ Store the Result
 result = 2 (Decimal) → Binary: 00000010
@@ -1480,7 +1485,8 @@ This shifts bit 1 to bit 0, making result either 1 or 0.
 
 **Example:**
 
-<code>#define BITMASK 0x02
+```C++
+#define BITMASK 0x02
 unsigned char value;
 unsigned char result;
 void setup() {
@@ -1496,7 +1502,7 @@ void loop() {
     delay(1000);
   }
 }
-</code>
+```
 
 
 <details>
