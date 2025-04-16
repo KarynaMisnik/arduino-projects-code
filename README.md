@@ -1764,7 +1764,7 @@ Since an LED doesn’t have significant resistance, the only resistance limiting
 > [!NOTE]
 > To test this - write the data from a input pin (which is connected to a switch) to the built-in LED on pin 13. This LED should shine when the switch to be tested is ON
 
-```html-nolint
+```C++
 // Define the pins connected to the switches
 const int switchPin1 = 5;  // Pin 5 for Switch 1
 const int switchPin2 = 6;  // Pin 6 for Switch 2
@@ -2235,13 +2235,13 @@ R1,R2,R3R1​,R2​,R3​ are in series
 
 The connection of R4R4​ is in parallel with the entire series of R1, R2, and R3.
 
-If R1, R2, R3 are in series, their <ins>total resistance</ins> is:
+If ${R_{1}}$, ${R_{2}}$, ${R_{3}}$ are in series, their <ins>total resistance</ins> is:
 
 **R123=R1+R2+R3=3k+3k+3k=9kΩ**
 
 And in that case, the total current **I** is the same through all resistors.
 
-**R4​=Rx**​ for now.
+**${R_{4}} = {R_{x}}$**​ for now.
 
 From **Ohm’s Law**:
 
