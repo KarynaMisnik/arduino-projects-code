@@ -2292,7 +2292,7 @@ $$
 R_x = \frac{4500}{45}  = 1000Ω = 1kΩ
 $$
 
-#### Calculate current using R4R4​, and compute power dissipation for each resistor
+#### Calculate current using R4​, and compute power dissipation for each resistor
 
 ✅ Experimental Setup Overview
 
