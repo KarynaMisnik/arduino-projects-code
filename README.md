@@ -1150,7 +1150,7 @@ void loop() {
 
 ## Custom Delay as a User Input at any time
 
-> the program so that it checks for user input from the Serial Monitor while the lights are operating, in addition to doing it at the start.
+> The program so that it checks for user input from the Serial Monitor while the lights are operating, in addition to doing it at the start.
 > If the user enters “S” while the lights are operating, the yellow LED is lit and the user can enter the delays.
 > When this is done, the lights resume normal operations (starting with the red LED being on).
 
