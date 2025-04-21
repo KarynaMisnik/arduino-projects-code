@@ -1651,6 +1651,14 @@ Serial.println(voltage); // Print the voltage value
 
 # Servo Motor and PCM
 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9eb36834-b9be-46c9-8a80-5176166fc70d"  width="800">
+  <br>
+  <em>Servo Motor</em>
+</p>
+
+
 # Arduino Environment
 
 # Arduino UNO hardware Basics, LTSpice Simulation
