@@ -34,6 +34,7 @@
 * [7 segment display](#7-segment-display)
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
+* [Servo Motor and PCM](#servo-motorand-pcm)
 * [Arduino Environment](#arduino-environment)
 * [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
   - [Q1:Calculate Resisitance](#q1-calculate-resisitance)
@@ -1647,6 +1648,8 @@ float voltage = sensorValue * (5.0 / 1023.0); // Convert to voltage (assuming 5V
 
 Serial.println(voltage); // Print the voltage value
 ```
+
+# Servo Motor and PCM
 
 # Arduino Environment
 
