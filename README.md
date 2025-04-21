@@ -1651,6 +1651,41 @@ Serial.println(voltage); // Print the voltage value
 
 # Servo Motor and PCM
 
+> Longer delay when an angle is 90 degree.
+
+```C++
+#include <Servo.h>
+
+Servo myservo;  // create servo object to control a servo
+int pos = 0;    // variable to store the servo position
+
+void setup() {
+	myservo.attach(9);  // attaches the servo on pin 9 to the servo object
+}
+
+void loop() {
+	// Sweep from 0 to 180
+	for (pos = 0; pos <= 180; pos += 1) {
+		myservo.write(pos);
+		delay(15);
+
+		if (pos == 90) {
+			delay(1500);  // Pause at 90 going up
+		}
+	}
+
+	// Sweep from 180 back to 0
+	for (pos = 180; pos >= 0; pos -= 1) {
+		myservo.write(pos);
+		delay(15);
+
+		if (pos == 90) {
+			delay(1500);  // Pause at 90 going down
+		}
+	}
+}
+
+```
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9eb36834-b9be-46c9-8a80-5176166fc70d"  width="800">
