@@ -34,7 +34,7 @@
 * [7 segment display](#7-segment-display)
 * [Analog signals](#analog-signals)
 * [Question 6: analogRead() function](#question-6-analogRead-function)
-* [Servo Motor and PCM](#servo-motorand-pcm)
+* [Servo Motor and PCM](#servo-motor-and-pcm)
 * [Arduino Environment](#arduino-environment)
 * [Arduino UNO hardware Basics, LTSpice Simulation](#arduino-uno-hardware-basics-ltspice-simulation)
   - [Q1:Calculate Resisitance](#q1-calculate-resisitance)
