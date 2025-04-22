@@ -1512,7 +1512,7 @@ void loop() {
  <a href="https://docs.arduino.cc/learn/programming/bit-math/">Bit Math</a>  
   </details>
 
-## 7 segment display
+# 7 segment display
 
 **Example:**
 
@@ -1542,7 +1542,7 @@ void loop()
         delay(1000); // Wait for 1 second to show the next digit
     }
 }
-    ```
+```
 
 ## Analog signals
 
