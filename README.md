@@ -749,6 +749,10 @@ But because UART sends data LSB (Least Significant Bit) first, the order is 1000
 
 After sending the data bits, a stop bit (always HIGH) is transmitted to signal the end of the byte.
 
+**The result for 'a'(97)**
+
+So the full UART byte waveform = 0 1 0 0 0 0 1 1 0 1(start bit + data + stop bit)
+
 **How to Calculate the Time for a Single Bit?**
 
 The time for a single bit in serial communication is determined by the baud rate (bits per second). The formula is:
