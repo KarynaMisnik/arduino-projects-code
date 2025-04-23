@@ -1518,6 +1518,61 @@ void loop() {
 
 # 7 segment display
 
+> Display '7'
+
+```C++
+#define SEG_PIN_ONE 2
+#define SEG_PIN_TWO 3
+#define SEG_PIN_THREE 4
+#define SEG_PIN_FOUR 5
+#define SEG_PIN_SHOW 10
+
+void showData(char a, char b, char c, char d)
+{
+	digitalWrite(SEG_PIN_ONE, a);
+	digitalWrite(SEG_PIN_TWO, b);
+	digitalWrite(SEG_PIN_THREE, c);
+	digitalWrite(SEG_PIN_FOUR, d);
+} //showData
+
+unsigned char number;
+
+void setup(){
+	pinMode(SEG_PIN_SHOW, OUTPUT);
+	pinMode(SEG_PIN_ONE, OUTPUT);
+	pinMode(SEG_PIN_TWO, OUTPUT);
+	pinMode(SEG_PIN_THREE, OUTPUT);
+	pinMode(SEG_PIN_FOUR, OUTPUT);
+
+	digitalWrite(SEG_PIN_SHOW, LOW); //activate display
+}
+
+void loop(){
+	char pinOne, pinTwo, pinThree, pinFour;
+
+	number = 0x07;
+
+	pinOne = number & 0x01;
+	pinTwo = number & 0x02;
+	pinTwo = pinTwo >> 1;
+	pinThree = number & 0x04;
+	pinThree = pinThree >> 2;
+	pinFour = number & 0x08;
+	pinFour = pinFour >> 3;
+
+	showData(pinOne, pinTwo, pinThree, pinFour);
+	delay(2000);
+}
+
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0d94c77c-5f45-4c40-9341-1300af4e440d"  width="800">
+  <br>
+  <em>7 Segment Display: 7</em>
+</p>
+
+
 **Example:**
 
 <details>
