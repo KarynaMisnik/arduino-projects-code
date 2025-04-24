@@ -2577,10 +2577,6 @@ void loop() {
 
 
 ```C++
-// Amplifier resistor values
-const float R1 = 10000.0; // 10kΩ
-const float R2 = 47000.0; // 47kΩ
-
 // ADC reference voltage
 const float Vref = 15.0; // Arduino UNO reference voltage
 
@@ -2598,9 +2594,6 @@ void loop() {
 
   // Convert ADC to amplified voltage
   float amplifiedVoltage = (adcValue / 1023.0) * Vref;
-
-  // Undo amplifier gain
-  float sensorVoltage = amplifiedVoltage * (R1 / (R1 + R2));
 
   // Convert voltage to temperature in °C
   float temperatureC = sensorVoltage * 100.0;
