@@ -2578,43 +2578,48 @@ void loop() {
 
 ```C++
 // ADC reference voltage
-const float Vref = 15.0; // Arduino UNO reference voltage
+const float Vref = 15.0;    // 15V for Arduino UNO
 
-// Pins
-const int sensorPin = A0;
-const int ledPin = 13;  // Built-in LED
+// LM35DZ pin
+const int sensorPin = A1;
+
+const float ADC_co=0.0049;
 
 void setup() {
-  pinMode(ledPin, OUTPUT);
+  // put your setup code here, to run once:
+  pinMode(A1,INPUT);
+  pinMode(13,OUTPUT);
   Serial.begin(9600);
 }
 
 void loop() {
+  // put your main code here, to run repeatedly:
   int adcValue = analogRead(sensorPin);
 
-  // Convert ADC to amplified voltage
-  float amplifiedVoltage = (adcValue / 1023.0) * Vref;
+  float inVolt=adcValue*ADC_co;
+  // Convert voltage to temperature
+  float temperatureC = inVolt * 10.0; // 10mV/°C = 0.01V/°C → multiply by 10
 
-  // Convert voltage to temperature in °C
-  float temperatureC = sensorVoltage * 100.0;
 
-  // LED control without hysteresis (direct flicker-style response)
-  if (temperatureC < 19.0) {
-    digitalWrite(ledPin, HIGH); // Turn LED on
-  } else if (temperatureC > 21.0) {
-    digitalWrite(ledPin, LOW);  // Turn LED off
-  }
-  // (Between 19°C and 21°C → no change; keeps last state)
-
-  // Output for monitoring
+  // Send to serial monitor
   Serial.print("Temperature: ");
   Serial.print(temperatureC);
-  Serial.print(" °C | LED: ");
-  Serial.println(digitalRead(ledPin) ? "ON" : "OFF");
+  Serial.println(" °C");
 
-  delay(500); // Faster updates for visible flickering
+//light on below 19C, off above 21
+if(temperatureC < 19){
+  digitalWrite(13, HIGH);
 }
+else if(temperatureC > 21){
+  digitalWrite(13, LOW);
+}
+   // Send to serial monitor
+  Serial.print("Temperature: ");
+  Serial.print(temperatureC);
+  Serial.println(" °C");
 
+  delay(1000); // 1 second delay
+}
 ```
 
 🔍 Behavior:
