@@ -2346,7 +2346,7 @@ Voltage across ${R_{4}} = 5V$
 
 Resistors ${R_{1}} = {R_{2}} = {R_{3}} = 3kΩ $
 
-R1,R2,R3R1​,R2​,R3​ are in series
+${R_{1}}$,${R_{2}}$,${R_{3}}$ are in series
 
 The connection of  ${R_{4}}​$ is in parallel with the entire series of ${R_{1}}​$, ${R_{2}}​$, and ${R_{3}}​$.
 
