@@ -1282,9 +1282,11 @@ Bit operations play a crucial role in embedded systems for among others, the fol
 • Memory Efficiency: Embedded systems often operate in resource-constrained environments
 with limited memory. Bit operations allow you to pack multiple binary flags or configuration
 options into a single memory location, conserving precious memory space.
+
 • I/O Control: Embedded systems frequently interact with various hardware peripherals and
 sensors, where individual bits in control registers configure and control device behavior. Bit
 manipulation is essential for setting, clearing, or toggling specific bits in these registers.
+
 • Interrupt Handling: In interrupt-driven systems, bit flags often signal various events or
 conditions. Efficiently managing and checking these flags is crucial for responding to events
 promptly and accurately.
