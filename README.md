@@ -2326,7 +2326,6 @@ If data is available, we use Serial.read() to get the data. We then check if the
 
 After turning the LED on or off, we provide feedback to the Serial Monitor with "LED ON" or "LED OFF".
 
-
 # Temperature Measurements
 
 # Analog temperature sensor and voltage measurement.
@@ -2375,7 +2374,6 @@ Voltage over R4R4​ is given as 5V:
 $$
 VR_4 = I \cdot R_x = 5
 $$
-
 
 Substitute **I** into this:
 
@@ -2503,7 +2501,6 @@ void loop() {
 
   delay(100); // Optional debounce delay
 }
-
 ```
 
 # LM35DZ sensor
@@ -2577,7 +2574,6 @@ void loop() {
 > Add thermostat functionality to the program, with a lower limit of
 > 19°C and an upper limit of 21°C, and use the built-in LED lamp of
 > the Arduino >development board (pin 13) as the output for the thermostat.
-
 
 ```C++
 // ADC reference voltage
