@@ -947,8 +947,11 @@ void loop() {
   </details>
 
 > Add a pushbutton for pedestrians. When the button is pushed, the Red LED lights up (other LEDs are off). This lasts for 10 seconds , after which the normal LED > pattern resumes.
+> 
 > Note that the button must be pushed as long as it takes for the loop() function to complete one turn.
+> 
 > At this point we have not dealt with interrupts, which would allow us to immediately detect the pushing of a button.
+> 
 > Then, add two more LEDs (red and green) for the pedestrian crossing. These would be for the people walking (pedestrians), not the cars driving by.
 
 ```C++
