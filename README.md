@@ -2334,7 +2334,6 @@ After turning the LED on or off, we provide feedback to the Serial Monitor with 
 
 > What must the resistance of ${R_{4}}$ be, if with 50V input voltage the voltage over R4 is 5V? The connection  shall contain R1=R2=R3=3 kΩ.
 
-
 <p align="center">
   <img src="https://github.com/user-attachments/assets/786885ec-732a-4164-9dee-5c8cd09aa943"  width="500">
   <br>
@@ -2370,7 +2369,6 @@ $$
 $$
 I = \frac{50}{9000 - R_x}
 $$
-
 
 Voltage over R4R4​ is given as 5V:
 
