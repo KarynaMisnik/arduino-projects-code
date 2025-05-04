@@ -886,7 +886,7 @@ void loop() {
 
 ## Question 5: readStringUntil() method
 
->  What the readStringUntil() method does?
+👉  What the readStringUntil() method does?
 
 The Serial.readStringUntil(char terminator) method reads characters from the serial buffer until:
 
